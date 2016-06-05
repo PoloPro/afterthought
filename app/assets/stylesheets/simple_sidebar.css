@@ -65,6 +65,7 @@
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
+    font-size: 16px;
     color: #9f82a7;
 }
 
