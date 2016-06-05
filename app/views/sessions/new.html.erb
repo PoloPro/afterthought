@@ -1,5 +1,7 @@
 <h1>Sign In</h1>
 
+<%= render 'shared/flash' %>
+
 <div id="user-toggle">
   <%= label_tag "instructor", "Instructor" %>
   <%= radio_button_tag "session", "instructor", "instructor" %>
@@ -9,12 +11,12 @@
 
 <div id="student-signin">
   <%= form_for(@student, url: sessions_path) do |f| %>
-    <%= render partial: "shared/session", locals: {f: f} %>
+    <%= render partial: "shared/session", locals: {f: f, user: @student} %>
   <% end %>
 </div>
 
 <div id="instructor-signin">
   <%= form_for(@instructor, url: sessions_path) do |f| %>
-    <%= render partial: "shared/session", locals: {f: f} %>
+    <%= render partial: "shared/session", locals: {f: f, user: @instructor} %>
   <% end %>
 </div>
