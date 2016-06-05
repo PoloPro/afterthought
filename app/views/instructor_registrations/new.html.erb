@@ -1,0 +1,5 @@
+<h1>Instructor Registration</h1>
+
+<%= form_for @instructor, url: instructor_registrations_path do |f| %>
+  <%= render partial: "shared/registration", locals: {f: f} %>
+<% end %>
