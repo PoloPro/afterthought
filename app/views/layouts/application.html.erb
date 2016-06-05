@@ -8,14 +8,27 @@
   <%= javascript_include_tag 'application' %>
 
   <!-- Bootstrap 4, minified -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"></script>
 
 </head>
 
 <body>
+
   <div class="container-fluid">
-    <%= yield %>
+    <div class="row">
+      <div class="col-xs-10">
+        <div class="container">
+          <%= yield %>
+        </div>
+      </div>
+      <div class="col-xs-2 right-navbar-col text-xs-right">
+        <% if content_for?(:navbar) %>
+        <%= yield(:navbar) %>
+        <% end %>
+      </div>
+    </div>
   </div>
+
 </body>
 </html>
