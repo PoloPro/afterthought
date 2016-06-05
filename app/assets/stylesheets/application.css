@@ -14,8 +14,6 @@
  *= require_self
  */
 
-.right-navbar-col {
-  background-color: #f1f1f1;
-  padding: 0px 0px;
-  margin: 0px 0px;
+* {
+  font-family: 'Lato', sans-serif;
 }
