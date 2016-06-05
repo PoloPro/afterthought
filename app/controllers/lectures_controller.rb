@@ -5,4 +5,9 @@ class LecturesController < ApplicationController
     @lectures = Lecture.all
   end
 
+  def show
+    @lecture = Lecture.find(params[:id])
+    @lecture_timer = LectureTimer.new(@lecture)
+  end
+
 end

@@ -1,0 +1,12 @@
+<h2><%= @lecture.title %></h2>
+<p><%= @lecture.description %></p>
+
+<br>
+
+<p>Created at: <%= @lecture.created_at %></p>
+<p>Lecture finished at: <%= @lecture.finish_time %></p>
+
+<br>
+
+<p>Lecture reviews are available starting at: <strong><%= @lecture_timer.start_time %></strong></p>
+<p>Lecture reviews are locked at: <strong><%= @lecture_timer.lock_time %></strong></p>

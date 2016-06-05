@@ -2,7 +2,7 @@
 
 <% lectures.each do |lecture| %>
 
-<h2><%= lecture.title %></h2>
+<h2><%= link_to lecture.title, course_lecture_path(lecture.course, lecture) %></h2>
 <p><%= lecture.description %></p>
 
 <% end %>
