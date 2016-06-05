@@ -4,10 +4,11 @@ class StudentRegistrationsController < ApplicationController
   end
 
   def create
-    student_new = Student.new(student_params).name.titleize
+    student_new = Student.new(student_params)
+    RegistrationHelpers.capitalize_name(student_new)
     if student_new.save
+      RegistrationHelpers.email_success(student_new)
       flash[:notice] = "Success! Welcome to Afterthought!"
-      RegistrationMailer.registration_confirmation(student_new).deliver_now
       redirect_to signup_path
     else
       flash.now[:alert] = "Signup Failed"

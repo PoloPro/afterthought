@@ -4,11 +4,12 @@ class InstructorRegistrationsController < ApplicationController
   end
 
   def create
-    instructor_new = Instructor.new(instructor_params).name.titleize
+    instructor_new = Instructor.new(instructor_params)
+    RegistrationHelpers.capitalize_name(instructor_new)
     if instructor_new.save
+      RegistrationHelpers.email_success(instructor_new)
       flash[:notice] = "Success! Welcome to Afterthought!"
-      RegistrationMailer.registration_confirmation(instructor_new).deliver_now
-      redirect_to instructor_path(instructor_new)
+      redirect_to signup_path
     else
       flash.now[:alert] = "Signup Failed"
       render :new
