@@ -13,5 +13,7 @@ Rails.application.routes.draw do
   get '/login', to: "sessons#new"
 
   root "home#index"
-
+  
+  get "instructors/home", to: "instructors#home"
+  get "students/home", to: "students#home"
 end
