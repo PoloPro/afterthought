@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources 'student_registrations',    only: [:create]
   resources 'instructor_registrations', only: [:create]
   resources 'sessions', only: [:create, :destroy]
-  get '/login',             to: "sessons#new"
+  get '/login',             to: "sessions#new"
 
   # Home/landing pages
   get "instructors/home",   to: "instructors#home"
