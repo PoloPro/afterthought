@@ -7,6 +7,8 @@ class CreateLectures < ActiveRecord::Migration[5.0]
       t.references :course, foreign_key: true
       t.boolean :locked
       t.datetime :finish_time
+
+      t.timestamps
     end
   end
 end
