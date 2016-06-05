@@ -1,4 +1,6 @@
 class StudentRegistrationsController < ApplicationController
+  skip_before_action :require_login
+  
   def new
     @student = Student.new
   end

@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   get '/instructor_signup', to: 'instructor_registrations#new'
   resources 'student_registrations',    only: [:create]
   resources 'instructor_registrations', only: [:create]
-  resources 'sessions', only: [:create, :destroy]
+  resources 'sessions', only: [:create]
+  delete '/signout',           to: 'sessions#destroy'
   get '/login',             to: "sessions#new"
 
   # Home/landing pages

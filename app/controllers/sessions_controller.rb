@@ -1,11 +1,15 @@
 class SessionsController < ApplicationController
+
+  skip_before_action :require_login
+  before_action :check_if_logged_in, only: [:new]
+
   def new
     @student = Student.new
     @instructor = Instructor.new
   end
 
   def create
-    if params.keys.include?("student")
+    if SessionHelpers.student_user?(params)
       student = Student.find_by(email: params[:student][:email])
       if student && student.authenticate(params[:student][:password])
         session[:student_id] = student.id
