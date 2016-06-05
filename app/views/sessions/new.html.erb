@@ -1,2 +1,15 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<h1>Sign In</h1>
+
+
+Sign in For: 
+<div id="student_signin">
+  <%= form_for(@student, url: sessions_path) do |f| %>
+    <%= render partial: "shared/session", locals: {f: f} %>
+  <% end %>
+</div>
+
+<div id="instructor_signin">
+  <%= form_for(@instructor, url: sessions_path) do |f| %>
+    <%= render partial: "shared/session", locals: {f: f} %>
+  <% end %>
+</div>
