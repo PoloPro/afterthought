@@ -16,17 +16,17 @@ class ApplicationController < ActionController::Base
 
   def require_login
     unless current_user
-      flash[:alert] = "You must be logged in to access that page"
+      flash[:alert] = "You must be signed in to access that page"
       redirect_to login_path
     end
   end
 
   def check_if_logged_in
     if session[:student_id]
-      flash[:notice] = "You are already logged in"
+      flash[:notice] = "You are already signed in"
       redirect_to students_home_path
     elsif session[:instructor_id]
-      flash[:notice] = "You are already logged in"
+      flash[:notice] = "You are already signed in"
       redirect_to instructor_home_path
     end
   end

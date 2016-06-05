@@ -19,3 +19,16 @@
   <% end %>
 
 </table> <!-- End of table -->
+
+
+<!-- <%= form_for(Course.new) do |f| %>
+<div class="form-group">
+  <label class="control-label">Find course by ID, name, or description:</label>
+      <%= f.text_field :course, list: 'course-info', class: "form-control", placeholder: "I,D name, or description" %>
+        <datalist id="course-info">
+          <% Courses.all.each do |course| %>
+            <option value="<%= restaurant.name %>"></option>
+          <% end %>
+        </datalist>
+</div>
+<% end %> -->
