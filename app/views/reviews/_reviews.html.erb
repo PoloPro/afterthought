@@ -1,0 +1,8 @@
+<h1>Reviews</h1>
+
+<% reviews.each do |review| %>
+
+<p><%= review.content %></p>
+<p>by <%= review.student.name %></p>
+
+<% end %>
