@@ -1,9 +1,13 @@
 
 <div class="form-group">
+  <div id="user_type">
+  </div>
+</div>
+<div class="form-group">
   <strong><%= f.label :email %></strong>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, placeholder: "Your Email" %>
 </div>
 <div class="form-group">
   <strong><%= f.label :password %></strong>
-    <%= f.text_field :password %>
+    <%= f.text_field :password, placeholder: "Your Password" %>
 </div>
