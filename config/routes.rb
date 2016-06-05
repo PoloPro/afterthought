@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/instructor_signup', to: 'instructor_registrations#new'
   resources 'student_registrations',    only: [:create]
   resources 'instructor_registrations', only: [:create]
+  resources 'sessions', only: [:create, :destroy]
   get '/login',             to: "sessons#new"
 
   # Home/landing pages
@@ -26,5 +27,5 @@ Rails.application.routes.draw do
 
   # Reviews
   get "reviews/index",      to: "reviews#index"
-  
+
 end

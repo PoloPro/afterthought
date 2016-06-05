@@ -1,5 +1,7 @@
 <h1>Student Registration</h1>
 
+<%= render 'shared/flash' %>
+
 <%= form_for @student, url: student_registrations_path do |f| %>
   <%= render partial: "shared/registration", locals: {f: f} %>
 <% end %>
