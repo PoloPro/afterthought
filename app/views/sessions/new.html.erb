@@ -1,2 +1,20 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<h1>Sign In</h1>
+
+<div id="user-toggle">
+  <%= label_tag "instructor", "Instructor" %>
+  <%= radio_button_tag "session", "instructor", "instructor" %>
+  <%= label_tag "student", "Student" %>
+  <%= radio_button_tag "session", "student", "student" %>
+</div>
+
+<div id="student-signin">
+  <%= form_for(@student, url: sessions_path) do |f| %>
+    <%= render partial: "shared/session", locals: {f: f} %>
+  <% end %>
+</div>
+
+<div id="instructor-signin">
+  <%= form_for(@instructor, url: sessions_path) do |f| %>
+    <%= render partial: "shared/session", locals: {f: f} %>
+  <% end %>
+</div>
