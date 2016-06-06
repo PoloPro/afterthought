@@ -19,7 +19,7 @@
     <%= render partial: "completed_feedback", locals: { lecture: @lecture, current_user: @current_user } %>
     <% else %>
     <!-- Form for submitting feedback -->
-    <%= render partial: "feedback_form", locals: { lecture: @lecture } %>
+    <%= render partial: "feedback_form", locals: { lecture: @lecture, current_user: @current_user } %>
   <% end %>
 </div>
 

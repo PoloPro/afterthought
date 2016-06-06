@@ -50,8 +50,6 @@ var toggleTips = function() {
   }
 }
 
-// Show and hide feedback form depending on submission
-
 
 // Add and remove name depending on user preference
 var removeName = function() {
@@ -68,13 +66,28 @@ var addName = function() {
 }
 
 // Submit feedback via Ajax
-
 var submitFeedback = function() {
-  var feedback = $('#feedback-text').val();
+  var content = $('#feedback-text').val();
+  var studentID = $('#feedback-data').attr('data-student-id');
+  var lectureID = $('#feedback-data').attr('data-lecture-id');
 
   $.ajax({
-    url: ''
+    url: '/reviews',
+    type: 'POST',
+    data: { 
+      review: {
+        student_id: studentID,
+        lecture_id: lectureID,
+        content: content
+      } 
+    },
+    success: function(response) {
+      console.log("success " + response)
+    }
   })
 
+
 }
+
+// Show and hide feedback form depending on submission
 

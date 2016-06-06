@@ -32,6 +32,6 @@ Rails.application.routes.draw do
 
   # Reviews
   get "reviews/index",      to: "reviews#index",    as: "reviews"
-  post "reviews/create",    to: "reviews#create"
+  post "reviews",    to: "reviews#create"
 
 end
