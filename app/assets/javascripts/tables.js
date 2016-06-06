@@ -7,3 +7,4 @@ var enableTableLinks = function() {
     window.document.location = $(this).data('url');
   })
 }
+
