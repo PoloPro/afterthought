@@ -1,6 +1,8 @@
 
   $(function() {
-
+    var urlLocation = window.location.href.match(/\bcourses\b$/)
+    var uiWidgetText = $(".ui-widget").text()
+    if(urlLocation !== null && urlLocation[0] === "courses" && uiWidgetText !== "") {
     $.widget( "custom.catcomplete", $.ui.autocomplete, {
         _create: function() {
           this._super();
@@ -38,4 +40,13 @@
       delay: 0,
       source: data
     });
+  }
   });
+
+
+  // $.ajax({
+  //       type: "GET",
+  //       dataType: "json",
+  //       url: "/courses/get_courses",
+  //       success: function(data){}
+  //   });

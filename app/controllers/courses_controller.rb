@@ -8,4 +8,11 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
   end
 
+  def get_courses
+
+    @courses = Course.all
+    data = {}
+
+  end
+
 end

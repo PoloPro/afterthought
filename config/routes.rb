@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   end
 
   # Courses
-
+  get '/courses/get_courses', to: 'courses#get_courses'
   # Lectures
   get "lectures/index",     to: "lectures#index",   as: "lectures"
 
