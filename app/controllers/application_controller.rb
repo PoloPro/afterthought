@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
       redirect_to students_home_path
     elsif session[:instructor_id]
       flash[:notice] = "You are already signed in"
-      redirect_to instructor_home_path
+      redirect_to instructors_home_path
     end
   end
 

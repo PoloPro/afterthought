@@ -1,0 +1,9 @@
+#search {
+  margin-left: 5px;
+  padding-left: 5px;
+}
+
+.ui-autocomplete-category {
+  padding-left: 5px;
+  margin-left: -3px;
+}
