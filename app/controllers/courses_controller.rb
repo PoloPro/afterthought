@@ -30,7 +30,6 @@ class CoursesController < ApplicationController
     search_term = params["data"]
     course = Course.find_by(title: params["data"])
     course = Course.find_by(description: params["data"]) if course.nil?
-    ##if course exists
     course_title = course.title
     course_description = course.description
     course_id = course.id
@@ -64,6 +63,7 @@ class CoursesController < ApplicationController
       course_students = course.students.count
 
       render json: {
+        slugified_title: course_title.parameterize,
         title: course_title,
         description: course_description,
         courseId: course_id,
@@ -73,6 +73,13 @@ class CoursesController < ApplicationController
     else
       render json: {alert: "Password failed"}
     end
+  end
+
+  def remove_course
+    course = Course.find_by(title: params["course_title"])
+    current_user.courses.delete(course)
+    current_user.save
+    render json: {courseTitle: course.title.parameterize}
   end
 
 end

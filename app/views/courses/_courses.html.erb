@@ -6,6 +6,7 @@
   <th>Title</th>
   <th>Description</th>
   <th>Students Enrolled</th>
+  <th>Delete</th>
 
   <% courses.each do |course| %>
 
@@ -14,14 +15,22 @@
       <td><%= course.title %></td>
       <td><%= course.description %></td>
       <td><%= course.students.count %></td>
+      <td><a src="#" action='course-delete' id="<%= course.title.parameterize
+       %>" title="<%= course.title %>">Remove</a></td>
     </tr>
 
   <% end %>
 
 </table> <!-- End of table -->
 
+<% if courses.empty? %>
+<br>
+ <h4 id="join-course-prompt"> <em>Please search for a course to join!</em></h4>
+ <br>
+<% end %>
+
 <div class="ui-widget">
-<label for="search"><button id='autocomplete-search' class='btn btn-sm btn-primary'>Search</button> </label>
+<label for="search"><button id='autocomplete-search' class='btn btn-sm btn-submit'>Search</button> </label>
 <input id="search" size="50" placeholder="find course by name or description">
 </div>
 
