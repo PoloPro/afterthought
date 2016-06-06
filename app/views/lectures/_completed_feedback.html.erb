@@ -1,10 +1,10 @@
 <div id="feedback-completed">
   <blockquote>
-    <p><%= current_user.get_review(lecture.id) %></p>
+    <p id="review-content"><%= current_user.get_review(lecture.id) %></p>
     <footer id="signature"><%= current_user.name %></footer>
   </blockquote>
 
-  <div id="username" style="display: none;" data="<%= current_user.name %>"></div>
+  <div id="review-data" style="display: none;" data-username="<%= current_user.name %>" data-review-id="<%= current_user.get_review_id(lecture.id) %>"></div>
 
   <button id="remove-name" class="btn btn-edit">Make Feedback Anonymous</button>
   <button id="add-name" class="btn btn-edit">Add Name to Feedback</button>

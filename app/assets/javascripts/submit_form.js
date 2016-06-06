@@ -20,10 +20,23 @@ $(document).ready(function() {
     addName();
   })
 
+  // Hide the form or feedback on page load
+  if ($('#review-boolean').attr('data-has-review') === "true") {
+    $('#feedback-form').hide();
+  } else if ($('#review-boolean').attr('data-has-review') == "false") {
+    $('#feedback-completed').hide();
+  } else {}
+
   // Submit feedback via AJAX on click
   $('#feedback-submit').on('click',function(event) {
     event.preventDefault();
     submitFeedback();
+  })
+
+  // Delete feedback and show form on click
+  $('#delete-feedback').on('click',function(event) {
+    event.preventDefault();
+    deleteFeedback();
   })
 })
 
@@ -59,7 +72,7 @@ var removeName = function() {
 }
 
 var addName = function() {
-  var username = $('#username').attr('data');
+  var username = $('#review-data').attr('data-username');
   $('#signature').html(username);
   $('#add-name').hide();
   $('#remove-name').show();
@@ -82,12 +95,42 @@ var submitFeedback = function() {
       } 
     },
     success: function(response) {
-      console.log("success " + response)
+      hideForm(response.id);
+    },
+    error: function(response) {
+      console.log("error " + JSON.stringify(response));
     }
   })
-
-
 }
 
+// Submit feedback via Ajax
+var deleteFeedback = function() {
+
+  var reviewID = $('#review-data').attr('data-review-id');
+
+  $.ajax({
+    url: '/reviews/' + reviewID,
+    type: 'DELETE',
+    success: function(response) {
+      showForm();
+    },
+    error: function(response) {
+      console.log("error " + JSON.stringify(response));
+    }
+  })
+}
+
+
 // Show and hide feedback form depending on submission
+var hideForm = function(reviewID) {
+  $('#feedback-form').hide();
+  $('#review-content').text($('#feedback-text').val()) 
+  $('#review-data').attr('data-review-id', reviewID);
+  $('#feedback-completed').show();
+}
+
+var showForm = function() {
+  $('#feedback-completed').hide();
+  $('#feedback-area').show();
+}
 

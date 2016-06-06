@@ -31,7 +31,6 @@ Rails.application.routes.draw do
   get "lectures/index",     to: "lectures#index",   as: "lectures"
 
   # Reviews
-  get "reviews/index",      to: "reviews#index",    as: "reviews"
-  post "reviews",    to: "reviews#create"
+  resources :reviews, only: [:index, :create, :destroy]
 
 end

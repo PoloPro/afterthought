@@ -12,7 +12,13 @@ class Student < ApplicationRecord
     return nil
   end
 
-  def has_review(lecture_id)
+  def get_review_id(lecture_id)
+    lecture = Lecture.find(lecture_id)
+    reviews.each { |review| return review.id if review.lecture == lecture }
+    return nil
+  end
+
+  def has_review?(lecture_id)
     lecture = Lecture.find(lecture_id)
     reviews.any?{ |review| review.lecture == lecture }
   end
