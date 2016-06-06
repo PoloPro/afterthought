@@ -1,9 +1,13 @@
 
 $(function() {
+  page_reset()
+});
+
+var page_reset = function() {
   autocompleteSearch()
   autocompleteEnter()
   autocompleteClick()
-});
+}
 
 var autocompleteSearch = function (){
   var urlLocation = window.location.href.match(/\bcourses\b$/)
@@ -102,14 +106,10 @@ var checkAddPermissions = function() {
       success: function(data){
         if (data.alert === undefined) {
          addPasswordPrompt(data)
-         autocompleteSearch()
-         autocompleteEnter()
-         autocompleteClick()
+         page_reset()
         } else {
          addFailText(data)
-         autocompleteSearch()
-         autocompleteEnter()
-         autocompleteClick()
+         page_reset()
         }
       }
     })
@@ -127,9 +127,7 @@ var addPasswordPrompt = function(data) {
   </form>`
   $("div.panel-body").append(passPrompt)
   enablePermissionsSubmit()
-  autocompleteSearch()
-  autocompleteEnter()
-  autocompleteClick()
+  page_reset()
 }
 
 var addFailText = function(data) {
@@ -156,38 +154,17 @@ var enablePermissionsSubmit = function() {
       success: function(data) {
         if (data.alert === undefined) {
           addSuccessText(data)
-          autocompleteSearch()
-          autocompleteEnter()
-          autocompleteClick()
+          page_reset()
         } else {
           addFailText(data)
-          autocompleteSearch()
-          autocompleteEnter()
-          autocompleteClick()
+          page_reset()
         }
       }
     })
   })
 }
 
-// var enableAddCourse = function() {
-//   $('#add-course').click(function(e){
-//     var courseId = $('#course-id').text()
-//     $.ajax({
-//       method: "POST",
-//       url: "/add_course",
-//       data: {course_id: courseId},
-//       success: function(data) {
-//         if (data.alert === undefined) {
-//           addSuccessText(data)
-//         } else {
-//           addFailText(data)
-//         }
-//       }
-//     })
-//   })
-// }
-//
+
 var addSuccessText = function(data) {
   var courseAlert = `<div class='alert alert-success'>
 <strong>Success!</strong> You have joined: ${data.title}
