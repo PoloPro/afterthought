@@ -12,8 +12,15 @@
  *
  *= require_tree .
  *= require_self
+ *= require jquery-ui-1.11.4.custom/jquery-ui.min
+ *= require jquery-ui-1.11.4.custom/jquery-ui.structure.min
+ *= require jquery-ui-1.11.4.custom/jquery-ui.theme.min
  */
 
 * {
   font-family: 'Lato', sans-serif;
 }
+
+/*#page-content-wrapper {
+  display: none;
+}*/

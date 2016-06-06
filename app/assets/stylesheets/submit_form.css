@@ -1,0 +1,24 @@
+.btn-submit {
+  background-color: #3d004d;
+  color: #ffffff;
+  border-radius: 0 !important;
+}
+
+.btn-submit:hover {
+  color: #9f82a7 !important;
+}
+
+#show-tips:hover {
+  cursor: pointer;
+}
+
+.btn-edit {
+  background-color: #3d004d;
+  color: #ffffff;
+  border-radius: 0 !important;
+  margin-right: 5px;
+}
+
+.btn-edit:hover {
+  color: #9f82a7 !important;
+}

@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  before_action :set_current_user
 
   def index
     @courses = current_user.courses
@@ -75,4 +76,10 @@ class CoursesController < ApplicationController
     end
   end
 
+  private
+
+  def set_current_user
+    @current_user = current_user
+  end
+  
 end
