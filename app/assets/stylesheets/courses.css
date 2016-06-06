@@ -9,10 +9,11 @@
 }
 
 
-.btn-submit:hover {
+.btn-search:hover {
   color: #ffffff !important;
   background-color: gray
 }
+
 #show-tips:hover {
   cursor: pointer;
 }

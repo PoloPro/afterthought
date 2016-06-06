@@ -1,13 +1,13 @@
 
 $(function() {
   page_reset()
+  clickDeleteListener()
 });
 
 var page_reset = function() {
   autocompleteSearch()
   autocompleteEnter()
   autocompleteClick()
-  clickDeleteListener()
 }
 
 var autocompleteSearch = function (){
@@ -89,7 +89,7 @@ var addCourseTable = function(data) {
         <td id=course-id class="table-row-link" data-url="${data.coursePath}">${data.courseId}</td>
         <td class="table-row-link" data-url="${data.coursePath}">${data.title}</td>
         <td class="table-row-link" data-url="${data.coursePath}">${data.description}</td>
-        <td><button class='btn btn-submit btn-sm' id="add-course">Add Course </button></td>
+        <td><button class='btn btn-search btn-sm' id="add-course">Add Course </button></td>
       </tr>
 
   </table> </div>`)
@@ -125,7 +125,7 @@ var addPasswordPrompt = function(data) {
       <label for="password">${data.prompt}</label>
       <input type="password" class="form-control" id="password">
     </div>
-    <button type="submit" class="btn btn-submit" id="permissions-submit">Submit</button>
+    <button type="submit" class="btn btn-search" id="permissions-submit">Submit</button>
   </form>`
   $("div.panel-body").append(passPrompt)
   enablePermissionsSubmit()
@@ -182,6 +182,7 @@ var addSuccessText = function(data) {
   $('#course-data-table').append(addCourseData)
   $('#join-course-prompt').css("display","none")
   enableTableLinks()
+  clickDeleteListener()
 }
 
 var clickDeleteListener = function() {
