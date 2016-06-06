@@ -102,8 +102,14 @@ var checkAddPermissions = function() {
       success: function(data){
         if (data.alert === undefined) {
          addPasswordPrompt(data)
+         autocompleteSearch()
+         autocompleteEnter()
+         autocompleteClick()
         } else {
          addFailText(data)
+         autocompleteSearch()
+         autocompleteEnter()
+         autocompleteClick()
         }
       }
     })
@@ -121,6 +127,9 @@ var addPasswordPrompt = function(data) {
   </form>`
   $("div.panel-body").append(passPrompt)
   enablePermissionsSubmit()
+  autocompleteSearch()
+  autocompleteEnter()
+  autocompleteClick()
 }
 
 var addFailText = function(data) {
@@ -132,7 +141,9 @@ var addFailText = function(data) {
 }
 
 var enablePermissionsSubmit = function() {
-  $('button#permissions-submit').click(function() {
+  $('button#permissions-submit').click(function(e) {
+    e.stopPropagation()
+    e.preventDefault()
     var password = $("#password").val()
     var courseId = $('#course-id').text()
     $.ajax({
@@ -145,8 +156,14 @@ var enablePermissionsSubmit = function() {
       success: function(data) {
         if (data.alert === undefined) {
           addSuccessText(data)
+          autocompleteSearch()
+          autocompleteEnter()
+          autocompleteClick()
         } else {
           addFailText(data)
+          autocompleteSearch()
+          autocompleteEnter()
+          autocompleteClick()
         }
       }
     })
@@ -171,18 +188,17 @@ var enablePermissionsSubmit = function() {
 //   })
 // }
 //
-// var addSuccessText = function(data) {
-//   var courseAlert = `<div class='alert alert-success'>
-// <strong>Success!</strong> You have joined: ${data.title}
-// </div>`
-//   var addCourseData = `<tr class="table-row-link" data-url="${data.coursePath}">
-//     <td>${data.courseId}</td>
-//     <td>${data.title}</td>
-//     <td>${data.description}</td>
-//     <td>${data.courseStudents}</td>
-//   </tr>`
-//   $('#find-course').html(courseAlert)
-//   $('#course-data-table').append(addCourseData)
-//   enableTableLinks()
-// }
-//
+var addSuccessText = function(data) {
+  var courseAlert = `<div class='alert alert-success'>
+<strong>Success!</strong> You have joined: ${data.title}
+</div>`
+  var addCourseData = `<tr class="table-row-link" data-url="${data.coursePath}">
+    <td>${data.courseId}</td>
+    <td>${data.title}</td>
+    <td>${data.description}</td>
+    <td>${data.courseStudents}</td>
+  </tr>`
+  $('#find-course').html(courseAlert)
+  $('#course-data-table').append(addCourseData)
+  enableTableLinks()
+}
