@@ -10,3 +10,7 @@
 
 <p>Lecture reviews are available starting at: <strong><%= @lecture_timer.start_time %></strong></p>
 <p>Lecture reviews are locked at: <strong><%= @lecture_timer.lock_time %></strong></p>
+
+<div id="progressbar" timeRemainingPercent="<%= @lecture_timer.time_remaining_percent %>"></div>
+
+
