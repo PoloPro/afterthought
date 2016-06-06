@@ -3,10 +3,33 @@
 
 <br>
 
-<p>Created at: <%= @lecture.created_at %></p>
-<p>Lecture finished at: <%= @lecture.finish_time %></p>
+<p>Lecture reviews are available starting at: <strong><%= @lecture_timer.start_time %></strong></p>
+<p>Lecture reviews are locked at: <strong><%= @lecture_timer.lock_time %></strong></p>
+
+<p>This lecture will be locked for feedback in <%= @lecture_timer.time_remaining %> hours (<%= @lecture_timer.lock_time %>)</p>
+<div id="progressbar" timeRemainingPercent="<%= @lecture_timer.time_remaining_percent %>"></div>
 
 <br>
 
-<p>Lecture reviews are available starting at: <strong><%= @lecture_timer.start_time %></strong></p>
-<p>Lecture reviews are locked at: <strong><%= @lecture_timer.lock_time %></strong></p>
+<% if @current_user.class == Student %>
+
+<div id="feedback-area">
+  <!-- Flash message for form failure -->
+  <% flash.each do |key, value| %>
+  <%= content_tag :div, value, class: "flash #{key}" %>
+  <% end %>
+
+  <div id="review-boolean" type="hidden" data-has-review="<%= current_user.has_review?(@lecture.id) %>">
+
+  <!-- Completed feedback shown here in place of form -->
+  <%= render partial: "completed_feedback", locals: { lecture: @lecture, current_user: @current_user } %>
+  <!-- Form for submitting feedback -->
+  <%= render partial: "feedback_form", locals: { lecture: @lecture, current_user: @current_user } %>
+
+</div>
+
+<% end %>
+
+
+
+

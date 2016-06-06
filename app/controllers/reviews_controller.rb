@@ -5,4 +5,28 @@ class ReviewsController < ApplicationController
     @reviews = Review.all
   end
 
+  def create
+    @review = Review.new(review_params)
+    lecture_id = @review.lecture.id
+    course_id = @review.lecture.course.id
+
+    flash[:failure] = "Your review was not saved." unless @review.save
+    render json: @review
+  end
+
+  def destroy
+    review = Review.find(params[:id])
+    lecture_id = review.lecture.id
+    course_id = review.lecture.course.id
+
+    flash[:failure] = "Your review was not deleted." unless review.destroy
+    redirect_to course_lecture_path(course_id, lecture_id), status: 303
+  end
+
+  private
+
+  def review_params
+    params.require(:review).permit(:student_id, :lecture_id, :content)
+  end
+
 end
