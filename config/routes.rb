@@ -27,6 +27,9 @@ Rails.application.routes.draw do
 
   # Courses
   get '/courses_autocomplete', to: 'courses#courses_autocomplete'
+  post "/display_joinable_courses", to: 'courses#display_joinable_courses'
+  post "/add_course",           to: "courses#add_course"
+  post "/check_course_permissions", to: "courses#check_course_permissions"
   # Lectures
   get "lectures/index",     to: "lectures#index",   as: "lectures"
 
