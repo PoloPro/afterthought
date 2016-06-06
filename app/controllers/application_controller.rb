@@ -12,6 +12,8 @@ class ApplicationController < ActionController::Base
     elsif session[:instructor_id]
       @current_user ||= Instructor.find_by(id: session[:instructor_id])
     end
+
+    @current_user ? @current_user : OpenStruct.new(name: "Guest", email: "guest@placeholder.com")
   end
 
   def require_login
