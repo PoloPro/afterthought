@@ -9,7 +9,7 @@
 i_chris = Instructor.create(name: "Chris McCord", email: "chrismccord@gmail.com", password: "password")
 i_sandi = Instructor.create(name: "Sandi Metz", email: "sandimetz@gmail.com", password: "password")
 
-c_elixir = Course.create(title: "Elixir", description: "Learn Elixir with Phoenix")
+c_elixir = Course.create(title: "Elixir", description: "Learn Elixir with Phoenix", password: "password")
 
 s_john = Student.create(name: "Louis Clarke", email: "pocahontas@gmail.com", password: "password")
 s_belle = Student.create(name: "Belle Storison", email: "codeasoldastime@gmail.com", password: "password")
@@ -42,7 +42,7 @@ l_regex = Lecture.create(title: "Regex in Elixir", description: "This should be 
 r_belle3 = Review.create(student: s_belle, lecture: l_regex, content: "since we did this for Ruby already, maybe we could get a few labs instead? I feel like more practice would be great", locked: false)
 
 ######### course with two instructors and one student
-c_intro = Course.create(title: "Intro to Coding", description: "Learn some basic principles of coding")
+c_intro = Course.create(title: "Intro to Coding", description: "Learn some basic principles of coding", password: "password")
 c_intro.instructors << i_chris << i_sandi
 c_intro.students << s_john
 

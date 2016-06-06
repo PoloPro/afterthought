@@ -28,9 +28,8 @@ class CoursesController < ApplicationController
 
   def display_joinable_courses
     search_term = params["data"]
-    courses = Course.all
-    course = courses.find_by(title: params["data"])
-    course = courses.find_by(description: params["data"]) if course.nil?
+    course = Course.find_by(title: params["data"])
+    course = Course.find_by(description: params["data"]) if course.nil?
     ##if course exists
     course_title = course.title
     course_description = course.description
@@ -44,21 +43,36 @@ class CoursesController < ApplicationController
     }
   end
 
-  def add_course
-    course = Course.find_by(id: 1)
-    course_title = course.title
-    course_description = course.description
-    course_id = course.id
-    course_path = course_path(course)
-    course_students = course.students.count
+  def check_course_permissions
+    course = Course.find_by(id: params["course_id"].to_i)
+    course_instructors = course.instructors
+    if !course_instructors.include? (current_user)
+      render json: {prompt: "Enter course password:"}
+    else
+      render json: {alert: "You've already joined that course"}
+    end
+  end
 
-    render json: {
-      title: course_title,
-      description: course_description,
-      courseId: course_id,
-      coursePath: course_path,
-      courseStudents: course_students
-    }
+  def add_course
+    course = Course.find_by(id: params["course_id"].to_i)
+    if course && course.authenticate(params["password"])
+      current_user.courses << course
+      course_title = course.title
+      course_description = course.description
+      course_id = course.id
+      course_path = course_path(course)
+      course_students = course.students.count
+
+      render json: {
+        title: course_title,
+        description: course_description,
+        courseId: course_id,
+        coursePath: course_path,
+        courseStudents: course_students
+      }
+    else
+      render json: {alert: "Password failed"}
+    end
   end
 
 end

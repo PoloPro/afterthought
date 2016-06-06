@@ -3,7 +3,6 @@ $(function() {
   autocompleteSearch()
   autocompleteEnter()
   autocompleteClick()
-  enableCourseClick()
 });
 
 var autocompleteSearch = function (){
@@ -90,21 +89,100 @@ var addCourseTable = function(data) {
 
   </table> </div>`)
   enableTableLinks()
-  enableCourseClick()
+  checkAddPermissions()
 }
 
-var enableCourseClick = function() {
+var checkAddPermissions = function() {
   $('#add-course').click(function(e){
     var courseId = $('#course-id').text()
     $.ajax({
       method: "POST",
-      url: "/add_course",
+      url: "/check_course_permissions",
       data: {course_id: courseId},
-      success: function(data) {
-        debugger
-        // alert that course successfully added
-        // add course to top course listings table
+      success: function(data){
+        if (data.alert === undefined) {
+         addPasswordPrompt(data)
+        } else {
+         addFailText(data)
+        }
       }
     })
   })
 }
+
+var addPasswordPrompt = function(data) {
+  var passPrompt = `
+  <form class="form-inline" role="form">
+    <div class="form-group">
+      <label for="password">${data.prompt}</label>
+      <input type="password" class="form-control" id="password">
+    </div>
+    <button type="submit" class="btn btn-default" id="permissions-submit">Submit</button>
+  </form>`
+  $("div.panel-body").append(passPrompt)
+  enablePermissionsSubmit()
+}
+
+var addFailText = function(data) {
+  var courseAlert = `
+  <div class='alert alert-danger'>
+    <strong>Oops!</strong> ${data.alert}
+  </div>`
+  $('#find-course').html(courseAlert)
+}
+
+var enablePermissionsSubmit = function() {
+  $('button#permissions-submit').click(function() {
+    var password = $("#password").val()
+    var courseId = $('#course-id').text()
+    $.ajax({
+      method: "POST",
+      url: "/add_course",
+      data: {
+        password: password,
+        course_id: courseId
+      },
+      success: function(data) {
+        if (data.alert === undefined) {
+          addSuccessText(data)
+        } else {
+          addFailText(data)
+        }
+      }
+    })
+  })
+}
+
+// var enableAddCourse = function() {
+//   $('#add-course').click(function(e){
+//     var courseId = $('#course-id').text()
+//     $.ajax({
+//       method: "POST",
+//       url: "/add_course",
+//       data: {course_id: courseId},
+//       success: function(data) {
+//         if (data.alert === undefined) {
+//           addSuccessText(data)
+//         } else {
+//           addFailText(data)
+//         }
+//       }
+//     })
+//   })
+// }
+//
+// var addSuccessText = function(data) {
+//   var courseAlert = `<div class='alert alert-success'>
+// <strong>Success!</strong> You have joined: ${data.title}
+// </div>`
+//   var addCourseData = `<tr class="table-row-link" data-url="${data.coursePath}">
+//     <td>${data.courseId}</td>
+//     <td>${data.title}</td>
+//     <td>${data.description}</td>
+//     <td>${data.courseStudents}</td>
+//   </tr>`
+//   $('#find-course').html(courseAlert)
+//   $('#course-data-table').append(addCourseData)
+//   enableTableLinks()
+// }
+//
