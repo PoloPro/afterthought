@@ -131,6 +131,6 @@ var hideForm = function(reviewID) {
 
 var showForm = function() {
   $('#feedback-completed').hide();
-  $('#feedback-area').show();
+  $('#feedback-form').show();
 }
 
