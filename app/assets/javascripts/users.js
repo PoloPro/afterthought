@@ -5,7 +5,6 @@ $(document).ready(function() {
 
 var userStart = function() {
   if($('#session_instructor').is(':checked')) {
-    debugger
     $("#student-signin").css("display","none")
     $("#instructor-signin").css("display", "");
   }else{
