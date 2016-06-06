@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   post "/display_joinable_courses", to: 'courses#display_joinable_courses'
   post "/add_course",           to: "courses#add_course"
   post "/check_course_permissions", to: "courses#check_course_permissions"
+  post "/remove_course",        to: "courses#remove_course"
   # Lectures
   get "lectures/index",     to: "lectures#index",   as: "lectures"
 
