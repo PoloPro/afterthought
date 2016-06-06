@@ -3,37 +3,28 @@
 
 <br>
 
-<p>Created at: <%= @lecture.created_at %></p>
-<p>Lecture finished at: <%= @lecture.finish_time %></p>
-
-<br>
-
 <p>Lecture reviews are available starting at: <strong><%= @lecture_timer.start_time %></strong></p>
 <p>Lecture reviews are locked at: <strong><%= @lecture_timer.lock_time %></strong></p>
 
+<p>This lecture will be locked for feedback in <%= @lecture_timer.time_remaining %> hours (<%= @lecture_timer.lock_time %>)</p>
 <div id="progressbar" timeRemainingPercent="<%= @lecture_timer.time_remaining_percent %>"></div>
 
 <br>
 
-<p>Please provide your thoughts on the lecture <em><%= @lecture.title %></em> in the field below.</p>
+<% if @current_user.class == Student %>
 
-<form id="feedback">
-  <textarea class="form-control" rows="5"></textarea>
-  <br>
-  <button type="submit" class="btn btn-submit">Submit</button>
-</form>
-
-<br>
-
-<div id="show-tips">
-  <small>Show tips</small>
+<div id="feedback-area">
+  <% if @current_user.has_review(@lecture.id) %>
+    <!-- Completed feedback shown here in place of form -->
+    <%= render partial: "completed_feedback", locals: { lecture: @lecture, current_user: @current_user } %>
+    <% else %>
+    <!-- Form for submitting feedback -->
+    <%= render partial: "feedback_form", locals: { lecture: @lecture } %>
+  <% end %>
 </div>
 
-<div id="tips">
-<ul class="list-group">
-<li class="list-group-item">Always try and provide constructive comments--they help make your lecture experience better!</li>
-<li class="list-group-item">Feedback can be delivered anonymously by clicking on your name.</li>
-</ul>
-</div>
+<% end %>
+
+
 
 

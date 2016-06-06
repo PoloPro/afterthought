@@ -1,0 +1,13 @@
+<div id="feedback-completed">
+  <blockquote>
+    <p><%= current_user.get_review(lecture.id) %></p>
+    <footer id="signature"><%= current_user.name %></footer>
+  </blockquote>
+
+  <div id="username" style="display: none;" data="<%= current_user.name %>"></div>
+
+  <button id="remove-name" class="btn btn-edit">Make Feedback Anonymous</button>
+  <button id="add-name" class="btn btn-edit">Add Name to Feedback</button>
+  <button id="edit-feedback" class="btn btn-edit">Edit Feedback</button>
+  <button id="delete-feedback" class="btn btn-edit">Delete Feedback</button>
+</div>

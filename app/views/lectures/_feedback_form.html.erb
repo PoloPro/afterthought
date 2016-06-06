@@ -1,0 +1,13 @@
+<div id="feedback-form">
+  <p>Please provide your thoughts on the lecture <em><%= lecture.title %></em> in the field below.</p>
+
+  <form>
+    <textarea id="feedback-text" class="form-control" rows="5"></textarea>
+    <br>
+    <button type="submit" id="feedback-submit" class="btn btn-submit">Submit</button>
+  </form>
+
+  <br>
+
+  <%= render "tips" %>
+</div>
