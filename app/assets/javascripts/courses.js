@@ -1,6 +1,7 @@
 
 $(function() {
   page_reset()
+  clickDeleteListener()
 });
 
 var page_reset = function() {
@@ -75,7 +76,7 @@ var autocompleteClick = function() {
 
 var addCourseTable = function(data) {
   $('#find-course').html(`
-  <div class="panel panel-primary">
+  <div class="panel panel-default">
     <div class="panel-heading">Search Result</div>
     <div class="panel-body">
     <table class="table table-hover table-responsive">
@@ -88,7 +89,7 @@ var addCourseTable = function(data) {
         <td id=course-id class="table-row-link" data-url="${data.coursePath}">${data.courseId}</td>
         <td class="table-row-link" data-url="${data.coursePath}">${data.title}</td>
         <td class="table-row-link" data-url="${data.coursePath}">${data.description}</td>
-        <td><button class='btn btn-success btn-sm' id="add-course">Add Course </button></td>
+        <td><button class='btn btn-search btn-sm' id="add-course">Add Course </button></td>
       </tr>
 
   </table> </div>`)
@@ -117,17 +118,19 @@ var checkAddPermissions = function() {
 }
 
 var addPasswordPrompt = function(data) {
+  if ($('.form-inline').val() === undefined) {
   var passPrompt = `
-  <form class="form-inline" role="form">
+  <form class="form-inline" role="form" id='password_form'>
     <div class="form-group">
       <label for="password">${data.prompt}</label>
       <input type="password" class="form-control" id="password">
     </div>
-    <button type="submit" class="btn btn-default" id="permissions-submit">Submit</button>
+    <button type="submit" class="btn btn-search" id="permissions-submit">Submit</button>
   </form>`
   $("div.panel-body").append(passPrompt)
   enablePermissionsSubmit()
   page_reset()
+ }
 }
 
 var addFailText = function(data) {
@@ -164,7 +167,6 @@ var enablePermissionsSubmit = function() {
   })
 }
 
-
 var addSuccessText = function(data) {
   var courseAlert = `<div class='alert alert-success'>
 <strong>Success!</strong> You have joined: ${data.title}
@@ -174,8 +176,36 @@ var addSuccessText = function(data) {
     <td>${data.title}</td>
     <td>${data.description}</td>
     <td>${data.courseStudents}</td>
+    <td><a src="#" action='course-delete' id='${data.slugified_title}' title="${data.title}">Remove</a></td>
   </tr>`
   $('#find-course').html(courseAlert)
   $('#course-data-table').append(addCourseData)
+  $('#join-course-prompt').css("display","none")
   enableTableLinks()
+  clickDeleteListener()
+}
+
+var clickDeleteListener = function() {
+  $("a[action='course-delete']").click(function(e) {
+    e.stopPropagation()
+    e.preventDefault()
+    var courseTitle = $(this).attr('title')
+    var confirmDelete = confirm("Are you sure you want to remove " + courseTitle + " from your courses?")
+    if (confirmDelete) {
+      $.ajax({
+        method: "POST",
+        url: "/remove_course",
+        data: {course_title: courseTitle},
+        success: function(data){
+          courseClass = "#" + data.courseTitle
+          $(courseClass).parent().parent().remove()
+          var courseAlert = `
+          <div class='alert alert-warning'>
+            You have left: ${data.courseTitle}
+          </div>`
+          $('#find-course').html(courseAlert)
+        }
+      })
+    }
+  })
 }

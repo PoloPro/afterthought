@@ -7,3 +7,21 @@
   padding-left: 5px;
   margin-left: -3px;
 }
+
+
+.btn-search:hover {
+  color: #ffffff !important;
+  background-color: gray
+}
+
+#show-tips:hover {
+  cursor: pointer;
+}
+
+.panel-heading {
+  background-color: #bfbfbf !important;
+}
+
+.panel {
+  border-color: #bfbfbf !important;
+}
