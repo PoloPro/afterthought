@@ -1,0 +1,16 @@
+
+<div class="form-group">
+  <div id="user_type">
+  </div>
+</div>
+<div class="form-group">
+  <strong><%= f.label :email %></strong>
+    <%= f.text_field :email, placeholder: "#{user.class} Email" %>
+</div>
+<div class="form-group">
+  <strong><%= f.label :password %></strong>
+    <%= f.password_field :password, placeholder: "#{user.class} Password" %>
+</div>
+<div class="form-group">
+  <%= f.submit "Sign In", id:"instructor-login-button", class: "btn btn-primary" %>
+</div>
