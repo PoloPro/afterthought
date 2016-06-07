@@ -4,18 +4,15 @@ $(document).ready(function() {
   // Show and hide tips on click
   $('#tips').hide();
   status = "hidden";
-
   $('#show-tips').on('click', function(event) {
     toggleTips();
   })
 
   // Add or remove name (anonymous is default) on click
   $('#add-name').hide();
-
   $('#remove-name').on('click', function(event) {
     removeName();
   })
-
   $('#add-name').on('click', function(event) {
     addName();
   })
@@ -40,7 +37,9 @@ $(document).ready(function() {
   })
 })
 
-// Tooltip show and hide
+// ======================================
+
+// Show and hide tooltip
 var showTips = function() {
   $('#tips').fadeIn(500);
   $('#show-tips').html('<small>Hide tips</small>');
@@ -63,20 +62,48 @@ var toggleTips = function() {
   }
 }
 
+// ======================================
 
 // Add and remove name depending on user preference
 var removeName = function() {
-  $('#signature').html('Anonymous');
-  $('#remove-name').hide();
-  $('#add-name').show();
+
+  var reviewID = $('#review-data').attr('data-review-id');
+
+  $.ajax({
+    url: '/reviews/anonymous',
+    type: 'POST',
+    data: { id: reviewID },
+    success: function(response) {
+      $('#signature').html('Anonymous');
+      $('#remove-name').hide();
+      $('#add-name').show();
+    },
+    error: function(response) {
+      console.log("error " + JSON.stringify(response));
+    }
+  })
 }
 
 var addName = function() {
   var username = $('#review-data').attr('data-username');
-  $('#signature').html(username);
-  $('#add-name').hide();
-  $('#remove-name').show();
+  var reviewID = $('#review-data').attr('data-review-id');
+
+  $.ajax({
+    url: '/reviews/named',
+    type: 'POST',
+    data: { id: reviewID },
+    success: function(response) {
+      $('#signature').html(username);
+      $('#add-name').hide();
+      $('#remove-name').show();
+    },
+    error: function(response) {
+      console.log("error " + JSON.stringify(response));
+    }
+  })
 }
+
+// ======================================
 
 // Submit feedback via Ajax
 var submitFeedback = function() {
@@ -103,6 +130,8 @@ var submitFeedback = function() {
   })
 }
 
+// ======================================
+
 // Submit feedback via Ajax
 var deleteFeedback = function() {
 
@@ -120,6 +149,7 @@ var deleteFeedback = function() {
   })
 }
 
+// ======================================
 
 // Show and hide feedback form depending on submission
 var hideForm = function(reviewID) {
@@ -133,4 +163,6 @@ var showForm = function() {
   $('#feedback-completed').hide();
   $('#feedback-form').show();
 }
+
+
 

@@ -23,6 +23,18 @@ class ReviewsController < ApplicationController
     redirect_to course_lecture_path(course_id, lecture_id), status: 303
   end
 
+  def make_review_anonymous
+    @review = Review.find(params[:id])
+    @review.anonymous = true
+    render json: @review
+  end
+
+  def make_review_named
+    @review = Review.find(params[:id])
+    @review.anonymous = false
+    render json: @review
+  end
+
   private
 
   def review_params
