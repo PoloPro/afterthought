@@ -5,7 +5,8 @@ class Student < ApplicationRecord
   has_many :lectures, through: :reviews
 
   validates :email, presence: true, uniqueness: true
-
+  validates :name, presence: true, uniqueness: true
+  
   has_secure_password
 
   def get_review(lecture_id)

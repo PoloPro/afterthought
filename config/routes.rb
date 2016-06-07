@@ -41,4 +41,5 @@ Rails.application.routes.draw do
   post "/reviews/named",            to: "reviews#make_review_named"
   post "/feedback/send",            to: "feedback#collate_and_send"
 
+  get "/student_autocomplete",      to: "students#student_autocomplete"
 end

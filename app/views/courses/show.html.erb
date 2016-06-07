@@ -1,2 +1,48 @@
-<h2><%= @course.title %></h2>
-<p><%= @course.description %></p>
+<h1><em>Course: <%= @course.title %></em></h1>
+<h3><small><%= @course.description %></small></h3>
+<hr>
+
+<div class="ui-widget">
+  <label for="search">
+    <button class='btn btn-xs btn-search'>Invite Student to Course</button>
+  </label>
+  <input id="student-search" size="30" placeholder="find student by name or email">
+</div>
+
+<hr>
+
+<br>
+
+<% if @lectures %>
+  <button id="lecture-display" class='btn btn-lg btn-submit '>See Lectures</button>
+  <button id="student-display" class='btn btn-lg btn-submit '>See Students</button>
+  <br><br>
+  <div>
+    <% @lectures.each do |lecture| %>
+      <h3 class='lecture-list'><%= link_to lecture.title, course_lecture_path(lecture.course, lecture)   %></h3>
+      <p class='lecture-list'><%= lecture.description %></p>
+    <% end %>
+  </div>
+
+  <div>
+    <% if @students %>
+      <% @students.each do |student| %>
+        <b><h4 class='student-list'><b><%= student.name %></b></h4>
+        <p class='student-list'><%= student.email %></p>
+        <br>
+      <% end %>
+    <% else %>
+      <p class='text-muted'>
+        There are currently no students in this course
+      </p>
+    <% end %>
+  </div>
+<% else %>
+  <p class='text-muted'>
+    There are currently no lectures for this course
+  </p>
+<% end %>
+
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
