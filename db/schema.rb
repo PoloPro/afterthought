@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20160606183839) do
     t.integer "lecture_id"
     t.text    "content"
     t.boolean "locked"
+    t.boolean "anonymous",  default: false
     t.index ["lecture_id"], name: "index_reviews_on_lecture_id", using: :btree
     t.index ["student_id"], name: "index_reviews_on_student_id", using: :btree
   end

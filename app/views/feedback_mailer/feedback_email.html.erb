@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+
+<body>
+  <h1>Hello NAME,</h1>
+  <p>Below is the feedback for your lecture <%= @lecture.title %>, from <%= @lecture.format_end_time %>.</p>
+
+  <% @reviews.each do |content, student| %>
+  <blockquote>
+    <p><%= review.content %></p>
+    <footer><%= review.student %></footer>
+  </blockquote>
+  <% end %>
+
+</body>
+
+</html>

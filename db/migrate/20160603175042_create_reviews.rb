@@ -5,6 +5,7 @@ class CreateReviews < ActiveRecord::Migration[5.0]
       t.references :lecture, foreign_key: true
       t.text :content
       t.boolean :locked
+      t.boolean :anonymous, default: false
     end
   end
 end
