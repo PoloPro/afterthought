@@ -3,7 +3,7 @@ class CoursesHelpers
   def self.get_course_info(search_term)
     course = Course.find_by(title: search_term)
     course = Course.find_by(description: search_term) if course.nil?
-    CoursesHelpers.put_info_in_hash(course)
+    CoursesHelpers.put_info_into_hash(course)
   end
 
   def self.not_course_instructor?(course_id, current_user)
@@ -12,7 +12,7 @@ class CoursesHelpers
     !course_instructors.include? (current_user)
   end
 
-  def self.put_info_in_hash(course)
+  def self.put_info_into_hash(course)
     info = {}
     info["course_title"] = course.title
     info["course_description"] = course.description
