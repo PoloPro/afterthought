@@ -25,17 +25,12 @@ class CoursesController < ApplicationController
 
   def display_joinable_courses
     search_term = params["data"]
-    course = Course.find_by(title: params["data"])
-    course = Course.find_by(description: params["data"]) if course.nil?
-    course_title = course.title
-    course_description = course.description
-    course_id = course.id
-    course_path = course_path(course)
+    info = CoursesHelpers.get_course_info(search_term)
     render json: {
-      title: course_title,
-      description: course_description,
-      courseId: course_id,
-      coursePath: course_path
+      title: info["course_title"],
+      description: info["course_description"],
+      courseId: info["course_id"],
+      coursePath: info["course_path"]
     }
   end
 
