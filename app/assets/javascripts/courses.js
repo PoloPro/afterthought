@@ -98,11 +98,15 @@ var addCourseTable = function(data) {
 var addCourseHeader = function(data) {
   if (data.userClass === "Instructor") {
     return "<th>Add Course</th>"
+  } else {
+    return ""
   }
 }
 var addButton = function(data) {
   if (data.userClass === "Instructor") {
     return "<td><button class='btn btn-search btn-sm' id='add-course'>Add Course </button></td>"
+  } else {
+    return ""
   }
 }
 
