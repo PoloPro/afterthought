@@ -1,16 +1,16 @@
 
 <div class="form-group">
-  <div id="user_type">
-  </div>
+  <strong><%= f.label :email, class: "control-label" %></strong>
+  <%= f.text_field :email, placeholder: "#{user.class} Email", class: "form-control" %>
 </div>
+
 <div class="form-group">
-  <strong><%= f.label :email %></strong>
-  <%= f.text_field :email, placeholder: "#{user.class} Email" %>
+  <strong><%= f.label :password, class: "control-label" %></strong>
+  <%= f.password_field :password, placeholder: "#{user.class} Password", class: "form-control" %>
 </div>
-<div class="form-group">
-  <strong><%= f.label :password %></strong>
-  <%= f.password_field :password, placeholder: "#{user.class} Password" %>
+
+<div class="form-group" style="float: right">
+  <%= f.submit "Sign In", id:"student-login-button", class: "btn btn-submit" %>
 </div>
-<div class="form-group">
-  <%= f.submit "Sign In", id:"student-login-button", class: "btn btn-primary" %>
-</div>
+
+<small>New to Afterthought? <%=link_to "Sign up", signup_path %></small>
