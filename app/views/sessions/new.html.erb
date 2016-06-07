@@ -11,12 +11,12 @@
 
 <div id="student-signin">
   <%= form_for(@student, url: sessions_path) do |f| %>
-    <%= render partial: "shared/session", locals: {f: f, user: @student} %>
+    <%= render partial: "shared/student_session", locals: {f: f, user: @student} %>
   <% end %>
 </div>
 
 <div id="instructor-signin">
   <%= form_for(@instructor, url: sessions_path) do |f| %>
-    <%= render partial: "shared/session", locals: {f: f, user: @instructor} %>
+    <%= render partial: "shared/instructor_session", locals: {f: f, user: @instructor} %>
   <% end %>
 </div>

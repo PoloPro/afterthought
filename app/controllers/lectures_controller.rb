@@ -9,7 +9,6 @@ class LecturesController < ApplicationController
     set_current_user
     @lecture = Lecture.find(params[:id])
     @lecture_timer = LectureTimer.new(@lecture)
-
   end
 
   private
