@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :current_user
+  helper_method :instructor_access_only
   before_action :require_login
 
   def current_user
@@ -30,6 +31,13 @@ class ApplicationController < ActionController::Base
     elsif session[:instructor_id]
       flash[:notice] = "You are already signed in"
       redirect_to instructors_home_path
+    end
+  end
+
+  def instructor_access_only
+    unless current_user.class == Instructor
+      flash[:alert] = "You do not have permissions to view that page"
+      redirect_to root_path
     end
   end
 
