@@ -25,11 +25,11 @@
 
     <!-- Render navbar depending on user type -->
     <% if false %>
-    <% if current_user.class == "Instructor" %> 
-    <%= render "layouts/instructor_navbar" %> 
-    <% elsif current_user.class == "Student" %> 
-    <%= render "layouts/student_navbar" %> 
-    <% end %> 
+    <% if current_user.class == "Instructor" %>
+      <%= render partial: "layouts/instructor_navbar", locals: {current_user: @current_user } %>
+    <% elsif current_user.class == "Student" %>
+      <%= render partial: "layouts/student_navbar", locals: {current_user: @current_user } %>
+    <% end %>
     <% end %>
 
     <!-- Placeholder -->
@@ -49,6 +49,5 @@
 
   </div>
   <!-- /#wrapper -->
-
 </body>
 </html>
