@@ -47,19 +47,14 @@ class CoursesController < ApplicationController
     course = Course.find_by(id: params["course_id"].to_i)
     if course && course.authenticate(params["password"])
       current_user.courses << course
-      course_title = course.title
-      course_description = course.description
-      course_id = course.id
-      course_path = course_path(course)
-      course_students = course.students.count
-
+      CoursesHelpers.put_info_in_hash(course)
       render json: {
-        slugified_title: course_title.parameterize,
-        title: course_title,
-        description: course_description,
-        courseId: course_id,
-        coursePath: course_path,
-        courseStudents: course_students
+        slugified_title: info["course_title"].parameterize,
+        title: info["course_title"],
+        description: info["course_description"],
+        courseId: info["course_id"],
+        coursePath: info["course_path"],
+        courseStudents: info["course_students"]
       }
     else
       render json: {alert: "Password failed"}
