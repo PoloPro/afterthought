@@ -1,5 +1,7 @@
 <h1>Create New Course</h1>
 
+<br>
+<%= render 'shared/flash' %>
 
 <%= form_for @course do |f| %>
 
@@ -20,7 +22,7 @@
   <div class="form-group">
     <%= f.label :password, "Password (note: do not re-use your user password)", class: "col-lg-2 control-label" %>
       <div class="col-lg-10">
-        <%= f.text_field :password, class: "form-control", placeholder: "Password" %>
+        <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
       </div>
   </div>
 

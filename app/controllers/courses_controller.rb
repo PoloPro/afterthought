@@ -14,6 +14,18 @@ class CoursesController < ApplicationController
     @course = Course.new
   end
 
+  def create
+    @course = Course.new(course_params)
+    if @course.save
+      current_user.courses << course
+      flash[:success] = "Course created successfully"
+      redirect_to courses_path
+    else
+      flash[:alert] = "Course create failed. Make sure all inputs are filled in and the passwords match"
+      render 'courses/new'
+    end
+  end
+
   def courses_autocomplete
     courses = Course.all
     data = []
@@ -69,5 +81,9 @@ class CoursesController < ApplicationController
 
   def set_current_user
     @current_user = current_user
+  end
+
+  def course_params
+    params.require(:course).permit(:title, :description, :password, :password_confirmation)
   end
 end
