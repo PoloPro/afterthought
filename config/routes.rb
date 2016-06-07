@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   end
 
   # Courses
+  resources :courses, only: [:new, :create]
   get '/courses_autocomplete', to: 'courses#courses_autocomplete'
   post "/display_joinable_courses", to: 'courses#display_joinable_courses'
   post "/add_course",           to: "courses#add_course"
