@@ -13,12 +13,11 @@ class CoursesHelpers
   end
 
   def self.put_info_into_hash(course)
-    info = {}
-    info["course_title"] = course.title
-    info["course_description"] = course.description
-    info["course_id"] = course.id
-    info["course_path"] = "/courses/#{course.id}"
-    info["course_students"] = course.students.count
-    info
+    {slugified_title: course.title.parameterize,
+    title: course.title,
+    description: course.description,
+    courseId: course.id,
+    coursePath: "/courses/#{course.id}",
+    courseStudents: course.students.count}
   end
 end
