@@ -1,8 +1,20 @@
-<h1>Reviews</h1>
+<% if current_user.class == Student %>
+<h1>Your Feedback</h1>
+<% else %>
+<h1>My Feedback</h1>
+<% end %>
 
 <% reviews.each do |review| %>
 
-<p><%= review.content %></p>
-<p>by <%= review.student.name %></p>
+<blockquote>
+  <%= review.content %>
+  <footer>
+    <% if review.anonymous %>
+    Anonymous, on <em><%= review.lecture.title %></em>
+    <% else %>
+    <%= review.student.name %> on <em><%= review.lecture.title %></em>
+    <% end %>
+  </footer>
+</blockquote>
 
 <% end %>

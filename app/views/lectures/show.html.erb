@@ -4,7 +4,7 @@
 <br>
 <hr>
 
-<p>Students can submit feedback for this lecture until <strong><%= @lecture_timer.lock_time %></strong>.</p>
+<p>Students can submit feedback for this lecture until <strong><%= @lecture_timer.lock_time_string %></strong>.</p>
 
 <p>This lecture will be locked for feedback in <%= @lecture_timer.time_remaining_string %>.</p>
 <div id="progressbar" timeRemainingPercent="<%= @lecture_timer.time_remaining_percent %>"></div>
@@ -30,6 +30,8 @@
 </div>
 
 <% end %>
+
+<%= button_to "Send Feedback", { controller: "feedback", action: "collate_and_send", id: @lecture.id }, method: :post %>
 
 
 

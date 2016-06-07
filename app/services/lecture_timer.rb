@@ -2,7 +2,14 @@ include ActionView::Helpers::DateHelper
 
 class LectureTimer
 
-  attr_reader :start_time, :lock_time, :total_time, :time_remaining, :time_remaining_percent, :time_remaining_string
+  attr_reader :start_time, 
+  :start_time_string,
+  :lock_time, 
+  :lock_time_string, 
+  :total_time, 
+  :time_remaining, 
+  :time_remaining_percent, 
+  :time_remaining_string
 
   def initialize(lecture)
     @lecture = lecture
@@ -15,11 +22,9 @@ class LectureTimer
   def calculate_time_remaining
     @start_time = get_start_time
     @lock_time = (@start_time + 24.hour).end_of_day
+    
     @total_time = @lock_time - @start_time
-
     @time_remaining = get_time_remaining
-    @time_remaining_percent = get_time_remaining_percent
-    @time_remaining_string = get_time_remaining_string
   end
 
   def get_start_time
@@ -41,8 +46,11 @@ class LectureTimer
 
   def format_times
     # Format is "Sunday, 5:35 PM"
-    @start_time = @start_time.strftime("%A, %l:%M %p")
-    @lock_time = @lock_time.strftime("%A, %l:%M %p")
+    @start_time_string = @start_time.strftime("%A, %l:%M %p")
+    @lock_time_string = @lock_time.strftime("%A, %l:%M %p")
+
+    @time_remaining_percent = get_time_remaining_percent
+    @time_remaining_string = get_time_remaining_string
   end
 
 end

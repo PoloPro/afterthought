@@ -1,8 +1,8 @@
 class ReviewsController < ApplicationController
 
   def index
-    # current_user ? @reviews = current_user.reviews : @reviews = []
-    @reviews = Review.all
+    @reviews = current_user.reviews.sort_by { |review| review.created_at }
+    @current_user = current_user
   end
 
   def create

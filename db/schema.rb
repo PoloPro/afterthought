@@ -56,11 +56,13 @@ ActiveRecord::Schema.define(version: 20160606183839) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer "student_id"
-    t.integer "lecture_id"
-    t.text    "content"
-    t.boolean "locked"
-    t.boolean "anonymous",  default: false
+    t.integer  "student_id"
+    t.integer  "lecture_id"
+    t.text     "content"
+    t.boolean  "locked"
+    t.boolean  "anonymous",  default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["lecture_id"], name: "index_reviews_on_lecture_id", using: :btree
     t.index ["student_id"], name: "index_reviews_on_student_id", using: :btree
   end

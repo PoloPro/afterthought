@@ -6,6 +6,8 @@ class CreateReviews < ActiveRecord::Migration[5.0]
       t.text :content
       t.boolean :locked
       t.boolean :anonymous, default: false
+      
+      t.timestamps
     end
   end
 end

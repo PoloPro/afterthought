@@ -1,0 +1,23 @@
+  <h4>Hello <%= @current_user.name %>,</h4>
+  <p>Below is the feedback for your lecture <strong><em><%= @lecture.title %></em></strong>, from <%= @lecture.format_end_time %>.</p>
+
+  <hr> 
+
+  <% @reviews.each do |content, student| %>
+  <blockquote>
+    <p><%= content %></p>
+    <footer>- <%= student %></footer>
+  </blockquote>
+  <% end %>
+
+  <hr>
+
+  Please visit <%= link_to "Afterthought", @lecture_url %> to manage your courses and see feedback for all of your lectures.
+
+  <br>
+  <br>
+
+  <footer>
+  Thank you!
+  <h4>The Afterthought Team</h4>
+  </footer>
