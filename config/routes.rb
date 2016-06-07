@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get "students/home",              to: "students#home"
 
   # Lectures routes nested under courses
-  resources :courses, only: [:index, :show] do
+  resources :courses, only: [:index, :show, :new, :create] do
     resources :lectures, only: [:new, :create, :show]
   end
 

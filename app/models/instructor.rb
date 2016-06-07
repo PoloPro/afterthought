@@ -4,5 +4,7 @@ class Instructor < ApplicationRecord
   has_many :lectures
   has_many :reviews, through: :lectures
 
+  validates :email, presence: true, uniqueness: true
+
   has_secure_password
 end

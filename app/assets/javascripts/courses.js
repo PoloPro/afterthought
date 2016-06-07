@@ -75,26 +75,35 @@ var autocompleteClick = function() {
 }
 
 var addCourseTable = function(data) {
-  $('#find-course').html(`
-  <div class="panel panel-default">
-    <div class="panel-heading">Search Result</div>
-    <div class="panel-body">
-    <table class="table table-hover table-responsive">
-    <th>Course ID</th>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Add Course</th>
+  $('#find-course').html("<div class='panel panel-default'>" +
+    "<div class='panel-heading'>Search Result</div>" +
+    "<div class='panel-body'>" +
+    "<table class='table table-hover table-responsive'>" +
+    "<th>Course ID</th>" +
+    "<th>Title</th>" +
+    "<th>Description</th>" +
+    addCourseHeader(data) +
 
-      <tr>
-        <td id=course-id class="table-row-link" data-url="${data.coursePath}">${data.courseId}</td>
-        <td class="table-row-link" data-url="${data.coursePath}">${data.title}</td>
-        <td class="table-row-link" data-url="${data.coursePath}">${data.description}</td>
-        <td><button class='btn btn-search btn-sm' id="add-course">Add Course </button></td>
-      </tr>
+      "<tr>" +
+        "<td id=course-id class='table-row-link' data-url='" + data.coursePath + "'>" + data.courseId + "</td>" +
+        "<td class='table-row-link' data-url='" + data.coursePath + "'>" + data.title + "</td>" +
+        "<td class='table-row-link' data-url='" + data.coursePath + "'>" + data.description + "</td>" + addButton(data) +
+      "</tr>" +
 
-  </table> </div>`)
+  "</table> </div>")
   enableTableLinks()
   checkAddPermissions()
+}
+
+var addCourseHeader = function(data) {
+  if (data.userClass === "Instructor") {
+    return "<th>Add Course</th>"
+  }
+}
+var addButton = function(data) {
+  if (data.userClass === "Instructor") {
+    return "<td><button class='btn btn-search btn-sm' id='add-course'>Add Course </button></td>"
+  }
 }
 
 var checkAddPermissions = function() {
@@ -119,14 +128,13 @@ var checkAddPermissions = function() {
 
 var addPasswordPrompt = function(data) {
   if ($('.form-inline').val() === undefined) {
-  var passPrompt = `
-  <form class="form-inline" role="form" id='password_form'>
-    <div class="form-group">
-      <label for="password">${data.prompt}</label>
-      <input type="password" class="form-control" id="password">
-    </div>
-    <button type="submit" class="btn btn-search" id="permissions-submit">Submit</button>
-  </form>`
+  var passPrompt = "<form class='form-inline' role='form' id='password_form'>" +
+    "<div class='form-group'>" +
+      "<label for='password'>" + data.prompt + "</label>" +
+      "<input type='password' class='form-control password-form' id='password'>" +
+    "</div>" +
+    "<button type='submit' class='btn btn-search' id='permissions-submit'>Submit</button>" +
+  "</form>"
   $("div.panel-body").append(passPrompt)
   enablePermissionsSubmit()
   page_reset()
@@ -134,10 +142,9 @@ var addPasswordPrompt = function(data) {
 }
 
 var addFailText = function(data) {
-  var courseAlert = `
-  <div class='alert alert-danger'>
-    <strong>Oops!</strong> ${data.alert}
-  </div>`
+  var courseAlert = "<div class='alert alert-danger'>" +
+    "<strong>Oops! </strong>" + data.alert +
+  "</div>"
   $('#find-course').html(courseAlert)
 }
 
@@ -168,16 +175,15 @@ var enablePermissionsSubmit = function() {
 }
 
 var addSuccessText = function(data) {
-  var courseAlert = `<div class='alert alert-success'>
-<strong>Success!</strong> You have joined: ${data.title}
-</div>`
-  var addCourseData = `<tr class="table-row-link" data-url="${data.coursePath}">
-    <td>${data.courseId}</td>
-    <td>${data.title}</td>
-    <td>${data.description}</td>
-    <td>${data.courseStudents}</td>
-    <td><a src="#" action='course-delete' id='${data.slugified_title}' title="${data.title}">Remove</a></td>
-  </tr>`
+  var courseAlert = "<div class='alert alert-success'> <strong>Success!</strong> You have joined: " + data.title +
+"</div>"
+  var addCourseData = "<tr class='table-row-link' data-url='" + data.coursePath + "'>" +
+    "<td>" + data.courseId + "</td>" +
+    "<td>" + data.title + "</td>" +
+    "<td>" + data.description + "</td>" +
+    "<td>" + data.courseStudents + "</td>" +
+    "<td><a src='#' action='course-delete' id='" + data.slugified_title + "' title='" + data.title + "'>Remove</a></td>" +
+  "</tr>"
   $('#find-course').html(courseAlert)
   $('#course-data-table').append(addCourseData)
   $('#join-course-prompt').css("display","none")
@@ -199,10 +205,9 @@ var clickDeleteListener = function() {
         success: function(data){
           courseClass = "#" + data.stringifyTitle
           $(courseClass).parent().parent().remove()
-          var courseAlert = `
-          <div class='alert alert-warning'>
-            You have left: ${data.title}
-          </div>`
+          var courseAlert = "<div class='alert alert-warning'>" +
+            "You have left: " + data.title +
+          "</div>"
           $('#find-course').html(courseAlert)
         }
       })
