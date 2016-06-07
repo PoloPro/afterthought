@@ -2,6 +2,7 @@
 $(function() {
   page_reset()
   clickDeleteListener()
+  autocompleteStudentSearch()
 });
 
 var page_reset = function() {
@@ -217,4 +218,47 @@ var clickDeleteListener = function() {
       })
     }
   })
+}
+
+
+var autocompleteStudentSearch = function (){
+  var urlLocation = window.location.href.match(/\bcourses\/\b\d+/)
+  var uiWidgetText = $(".ui-widget").text()
+  if(urlLocation !== null && urlLocation[0] && uiWidgetText !== "") {
+    $.widget( "custom.catcomplete", $.ui.autocomplete, {
+      _create: function() {
+        this._super();
+        this.widget().menu( "option", "items", "> :not(.ui-autocomplete-student-category)" );
+      },
+      _renderMenu: function( ul, items ) {
+        var that = this,
+          currentCategory = "";
+        $.each( items, function( index, item ) {
+          var li;
+          if ( item.category != currentCategory ) {
+            ul.append( "<li class='ui-autocomplete-student-category'>" + "<b>" + item.category + "<b>" + "</li>" );
+            currentCategory = item.category;
+          }
+          li = that._renderItemData( ul, item );
+          if ( item.category ) {
+            li.attr( "aria-label", item.category + " : " + item.label );
+          }
+        });
+      }
+    });
+  getStudentData()
+  }
+}
+
+var getStudentData = function() {
+  $.ajax({
+    method: "GET",
+    url: "/student_autocomplete",
+    success: function(data){
+          $( "#student-search" ).catcomplete({
+      delay: 0,
+      source: data.data
+    });
+    }
+  });
 }

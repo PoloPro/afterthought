@@ -1,15 +1,15 @@
 class StudentRegistrationsController < ApplicationController
   skip_before_action :require_login
-  
+
   def new
     @student = Student.new
   end
 
   def create
-    student_new = Student.new(student_params)
-    RegistrationHelpers.capitalize_name(student_new)
-    if student_new.save
-      RegistrationHelpers.email_success(student_new)
+    @student = Student.new(student_params)
+    RegistrationHelpers.capitalize_name(@student)
+    if @student.save
+      RegistrationHelpers.email_success(@student)
       flash[:notice] = "Success! Welcome to Afterthought!"
       redirect_to signup_path
     else

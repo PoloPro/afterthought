@@ -40,4 +40,5 @@ Rails.application.routes.draw do
   post "/reviews/anonymous",        to: "reviews#make_review_anonymous"
   post "/reviews/named",            to: "reviews#make_review_named"
 
+  get "/student_autocomplete",      to: "students#student_autocomplete"
 end
