@@ -10,6 +10,10 @@ class CoursesController < ApplicationController
     set_current_user
   end
 
+  def new
+    @course = Course.new
+  end
+
   def courses_autocomplete
     courses = Course.all
     data = []
