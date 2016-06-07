@@ -25,3 +25,21 @@
 .panel {
   border-color: #bfbfbf !important;
 }
+
+.course-create {
+  margin-top: 15px;
+}
+
+.under-widget {
+  font-family: Verdana, Arial, sans-serif !important;
+  font-size: 1.05em !important;
+  font-weight: 580 !important;
+  line-height: 1.5 !important;
+}
+
+#course-create-text {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  margin-left: 10px;
+  font-weight: 500;
+}
