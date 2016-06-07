@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   resources :reviews, only: [:index, :create, :destroy]
   post "/reviews/anonymous",        to: "reviews#make_review_anonymous"
   post "/reviews/named",            to: "reviews#make_review_named"
+  post "/feedback/send",            to: "feedback#collate_and_send"
 
   get "/student_autocomplete",      to: "students#student_autocomplete"
 end
