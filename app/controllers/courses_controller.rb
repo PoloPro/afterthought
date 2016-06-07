@@ -13,16 +13,12 @@ class CoursesController < ApplicationController
     courses = Course.all
     data = []
     courses.each do |course|
-      title_hash = {}
-      title_hash["label"] = course.title
-      title_hash["category"] = "Title"
-      data << title_hash
+      label_type = course.title
+      autocomplete_data(data, label_type, "Title")
     end
     courses.each do |course|
-      description_hash = {}
-      description_hash["label"] = course.description
-      description_hash["category"] = "Description"
-      data << description_hash
+      label_type = course.description
+      autocomplete_data(data, label_type, "Description")
     end
     render json: {data: data}
   end
@@ -84,6 +80,12 @@ class CoursesController < ApplicationController
   end
 
   private
+  def autocomplete_data(data, label_type, category_type)
+    title_hash = {}
+    title_hash["label"] = label_type
+    title_hash["category"] = category_type
+    data << title_hash
+  end
 
   def set_current_user
     @current_user = current_user
