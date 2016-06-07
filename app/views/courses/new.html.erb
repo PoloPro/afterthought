@@ -3,38 +3,30 @@
 <br>
 <%= render 'shared/flash' %>
 
-<%= form_for @course do |f| %>
+<%= form_for @course, class: "form-horizontal" do |f| %>
 
   <div class="form-group">
-    <%= f.label :title, class: "col-lg-2 control-label" %>
-      <div class="col-lg-10">
+    <%= f.label :title, class: "control-label" %>
         <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
-      </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :description, class: "col-lg-2 control-label" %>
-      <div class="col-lg-10">
+    <%= f.label :description, class: "control-label" %>
         <%= f.text_area :description, class: "form-control", placeholder: "Description" %>
-      </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :password, "Password (note: do not re-use your user password)", class: "col-lg-2 control-label" %>
-      <div class="col-lg-10">
+    <%= f.label :password, "Password (hint: one that you're comfortable sharing with other instructors)", class: " control-label" %>
         <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
-      </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :password_confirmation, class: "col-lg-2 control-label" %>
-    <div class="col-lg-10">
+    <%= f.label :password_confirmation, class: "control-label" %>
       <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password" %>
-    </div>
   </div>
 
   <div class="form-group">
-    <div class="col-lg-10 col-lg-offset-2">
+    <div class="">
       <%= f.submit "Create Course", class: "btn btn-submit" %>
     </div>
   </div>
