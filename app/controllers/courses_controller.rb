@@ -35,9 +35,8 @@ class CoursesController < ApplicationController
   end
 
   def check_course_permissions
-    course = Course.find_by(id: params["course_id"].to_i)
-    course_instructors = course.instructors
-    if !course_instructors.include? (current_user)
+    course_id = params["course_id"].to_i
+    if CoursesHelpers.not_course_instructor?(course_id, current_user)
       render json: {prompt: "Enter course password:"}
     else
       render json: {alert: "You've already joined that course"}

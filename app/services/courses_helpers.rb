@@ -10,4 +10,10 @@ class CoursesHelpers
     info["course_path"] = "/courses/#{course.id}"
     info
   end
+
+  def self.not_course_instructor?(course_id, current_user)
+    course = Course.find_by(id: course_id)
+    course_instructors = course.instructors
+    !course_instructors.include? (current_user)
+  end
 end
