@@ -11,6 +11,7 @@ class CoursesController < ApplicationController
   end
 
   def new
+    instructor_access_only
     @course = Course.new
   end
 
