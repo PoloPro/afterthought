@@ -12,30 +12,14 @@
 <hr>
 
 <br>
-
-<% if @lectures %>
+<% unless @lectures.empty? %>
   <button id="lecture-display" class='btn btn-lg btn-submit '>See Lectures</button>
   <button id="student-display" class='btn btn-lg btn-submit '>See Students</button>
-  <br><br>
-  <div>
-    <% @lectures.each do |lecture| %>
-      <h3 class='lecture-list'><%= link_to lecture.title, course_lecture_path(lecture.course, lecture)   %></h3>
-      <p class='lecture-list'><%= lecture.description %></p>
-    <% end %>
-  </div>
+
+  <%= render partial: "lecture_list", locals: { lectures: @lectures} %>
 
   <div>
-    <% if @students %>
-      <% @students.each do |student| %>
-        <b><h4 class='student-list'><b><%= student.name %></b></h4>
-        <p class='student-list'><%= student.email %></p>
-        <br>
-      <% end %>
-    <% else %>
-      <p class='text-muted'>
-        There are currently no students in this course
-      </p>
-    <% end %>
+    <%= render partial: "student_list", locals: { students: @students} %>
   </div>
 <% else %>
   <p class='text-muted'>

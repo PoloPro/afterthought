@@ -19,12 +19,13 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.new(course_params)
+    binding.pry
     if @course.save
-      current_user.courses << course
+      current_user.courses << @course
       flash[:success] = "Course created successfully"
       redirect_to courses_path
     else
-      flash[:alert] = "Course create failed. Make sure all inputs are filled in and the passwords match"
+      flash[:alert] = "Course create failed. Make sure the passwords match and that all inputs are filled in and are unique"
       render 'courses/new'
     end
   end
