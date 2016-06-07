@@ -3,6 +3,12 @@
   padding-left: 5px;
 }
 
+#student-search {
+  margin-left: 5px;
+  padding-left: 5px;
+  padding-bottom: 5px;
+}
+
 .ui-autocomplete-category {
   padding-left: 5px;
   margin-left: -3px;
@@ -47,4 +53,12 @@
 .password-form {
   margin-left: 10px;
   margin-right: 10px
+}
+
+#student-display {
+  margin-left: 10px;
+}
+
+.student-list {
+  display: none;
 }

@@ -7,6 +7,8 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
+    @lectures = @course.lectures
+    @students = @course.students
     set_current_user
   end
 
