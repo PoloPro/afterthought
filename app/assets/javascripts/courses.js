@@ -197,11 +197,11 @@ var clickDeleteListener = function() {
         url: "/remove_course",
         data: {course_title: courseTitle},
         success: function(data){
-          courseClass = "#" + data.courseTitle
+          courseClass = "#" + data.stringifyTitle
           $(courseClass).parent().parent().remove()
           var courseAlert = `
           <div class='alert alert-warning'>
-            You have left: ${data.courseTitle}
+            You have left: ${data.title}
           </div>`
           $('#find-course').html(courseAlert)
         }
