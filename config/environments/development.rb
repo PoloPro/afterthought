@@ -49,13 +49,13 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  config.action_mailer.default_url_options = { host: ENV['EMAIL_HOST'] }
-  config.action_mailer.delivery_method = :letter_opener
-  # config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: ENV['EMAIL_HOST'], port: 3000 }
+  # config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
-    domain:               'gmail.com',
+    domain:               'localhost',
     user_name:            ENV['EMAIL'],
     password:             ENV['EMAIL_PASSWORD'],
     authentication:       'plain',
