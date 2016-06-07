@@ -2,7 +2,9 @@
 
 <br>
 
-<%= render partial: "courses", locals: { courses: @courses } %>
+<%= render partial: "courses", locals: { courses: @courses} %>
+
+<%= render partial: "autocomplete", locals: { courses: @courses, current_user: @current_user } %>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>

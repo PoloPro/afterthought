@@ -7,6 +7,7 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
+    set_current_user
   end
 
   def courses_autocomplete
@@ -25,12 +26,12 @@ class CoursesController < ApplicationController
 
   def display_joinable_courses
     search_term = params["data"]
-    render json: CoursesHelpers.get_course_info(search_term)
+    render json: CoursesHelpers.get_course_info(search_term, set_current_user)
   end
 
   def check_course_permissions
     course_id = params["course_id"].to_i
-    if CoursesHelpers.not_course_instructor?(course_id, current_user)
+    if CoursesHelpers.not_course_instructor?(course_id, set_current_user)
       render json: {prompt: "Enter course password:"}
     else
       render json: {alert: "You've already joined that course"}
@@ -41,7 +42,7 @@ class CoursesController < ApplicationController
     course = Course.find_by(id: params["course_id"].to_i)
     if course && course.authenticate(params["password"])
       current_user.courses << course
-      render json: CoursesHelpers.put_info_into_hash(course)
+      render json: CoursesHelpers.put_info_into_hash(course, current_user)
     else
       render json: {alert: "Password failed"}
     end

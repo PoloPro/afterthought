@@ -83,18 +83,28 @@ var addCourseTable = function(data) {
     <th>Course ID</th>
     <th>Title</th>
     <th>Description</th>
-    <th>Add Course</th>
+    ${addCourseHeader(data)}
 
       <tr>
         <td id=course-id class="table-row-link" data-url="${data.coursePath}">${data.courseId}</td>
         <td class="table-row-link" data-url="${data.coursePath}">${data.title}</td>
-        <td class="table-row-link" data-url="${data.coursePath}">${data.description}</td>
-        <td><button class='btn btn-search btn-sm' id="add-course">Add Course </button></td>
+        <td class="table-row-link" data-url="${data.coursePath}">${data.description}</td> ${addButton(data)}
       </tr>
 
   </table> </div>`)
   enableTableLinks()
   checkAddPermissions()
+}
+
+var addCourseHeader = function(data) {
+  if (data.userClass === "Instructor") {
+    return `<th>Add Course</th>`
+  }
+}
+var addButton = function(data) {
+  if (data.userClass === "Instructor") {
+    return `<td><button class='btn btn-search btn-sm' id="add-course">Add Course </button></td>`
+  }
 }
 
 var checkAddPermissions = function() {
