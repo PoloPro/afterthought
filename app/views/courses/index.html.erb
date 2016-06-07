@@ -1,7 +1,7 @@
 <h2>Courses</h2>
 
 <br>
-
+<%= render 'shared/flash' %>
 <%= render partial: "courses", locals: { courses: @courses} %>
 
 <%= render partial: "autocomplete", locals: { courses: @courses, current_user: @current_user } %>
