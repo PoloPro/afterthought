@@ -9,7 +9,7 @@
   <%= render partial: "course_show_buttons", locals: { course: @course} %>
 <% elsif @current_user.class == Instructor %>
   <p class='text-muted'>
-    Only instructors who have joined this course may add students and lectures. You can find the right page by clicking "Courses" on the sidebar
+    Only instructors who have joined this course may add/remove students and lectures. You can join by clicking "Courses" on the sidebar, searching for the course, and submitting the course password
   </p>
 <% end %>
 <hr>
@@ -22,7 +22,7 @@
   <%= render partial: "lecture_list", locals: { lectures: @lectures} %>
 
   <div>
-    <%= render partial: "student_list", locals: { students: @students} %>
+    <%= render partial: "student_list", locals: { students: @students, course: @course, current_user: @current_user} %>
   </div>
 <% else %>
   <p class='text-muted'>

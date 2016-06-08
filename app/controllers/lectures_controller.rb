@@ -26,9 +26,11 @@ class LecturesController < ApplicationController
   end
 
   def get_remaining_time
-    lecture = Lecture.find(params[:id])
-    lecture_timer = LectureTimer.new(lecture)
-    render json: { lecture_timer: lecture_timer }
+    if params[:id]
+      lecture = Lecture.find(params[:id])
+      lecture_timer = LectureTimer.new(lecture)
+      render json: { lecture_timer: lecture_timer }
+    end
   end
 
   private
