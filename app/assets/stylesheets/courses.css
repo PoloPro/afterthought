@@ -1,3 +1,23 @@
+.remove-icon {
+  color: #c0c0c0;
+}
+
+.remove-icon:hover {
+  color:#ff0000; 
+  text-decoration:none; 
+  cursor:pointer;
+}
+
+#course-search-area {
+  border: 1px solid #c0c0c0;
+  padding: 15px;
+}
+
+#course-create-area {
+  border: 1px solid #c0c0c0;
+  padding: 15px;
+}
+
 #search {
   margin-left: 5px;
   padding-left: 5px;
@@ -11,13 +31,19 @@
 
 .ui-autocomplete-category {
   padding-left: 5px;
-  margin-left: -3px;
+  margin-left: 0px;
+  font-size: 1.1em;
 }
 
 
+.btn-search {
+  background-color: #3d004d;
+  color: #ffffff;
+  border-radius: 0 !important;
+}
+
 .btn-search:hover {
-  color: #ffffff !important;
-  background-color: gray
+  color: #9f82a7 !important;
 }
 
 #show-tips:hover {
@@ -25,7 +51,6 @@
 }
 
 .panel-heading {
-  background-color: #bfbfbf !important;
 }
 
 .panel {
@@ -68,12 +93,12 @@
 }
 
 .div_common {
--webkit-column-count: 1;
--moz-column-count: 1;
-column-count: 1;
--webkit-column-gap: 30px;
-column-gap: 15px;
--moz-column-gap: 30px;
+  -webkit-column-count: 1;
+  -moz-column-count: 1;
+  column-count: 1;
+  -webkit-column-gap: 30px;
+  column-gap: 15px;
+  -moz-column-gap: 30px;
 }
 
 /*uncomment the following lines to make courses show page student remove button inline with student email*/
@@ -83,4 +108,4 @@ column-gap: 15px;
 
 a.remove-student {
   margin-left: 10px;
-}*/
+  }*/

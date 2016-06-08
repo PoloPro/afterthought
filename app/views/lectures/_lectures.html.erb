@@ -1,8 +1,24 @@
 <h1>Lectures</h1>
 
-<% lectures.each do |lecture| %>
+<!-- Table -->
+<table class="table table-hover table-responsive">
 
-<h2><%= link_to lecture.title, course_lecture_path(lecture.course, lecture) %></h2>
-<p><%= lecture.description %></p>
+  <th>Lecture Date</th>
+  <th>Title</th>
+  <th>Description</th>
+  <th>Feedback Submitted</th>
+  <th>Locked for Feedback?</th>
 
-<% end %>
+  <% lectures.each do |lecture| %>
+
+  <tr class="table-row-link" data-url="<%= course_lecture_path(lecture.course.id, lecture.id) %>">
+    <td><%= lecture.finish_time %></td>
+    <td><%= lecture.title %></td>
+    <td><%= lecture.description %></td>
+    <td><%= lecture.reviews.count %></td>
+    <td><%= lecture.locked %></td>
+  </tr>
+
+  <% end %>
+
+</table> <!-- End of table -->

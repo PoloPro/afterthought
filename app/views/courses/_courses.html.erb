@@ -6,19 +6,20 @@
   <th>Title</th>
   <th>Description</th>
   <th>Students Enrolled</th>
-  <th>Delete</th>
+  <th style="text-align: center">Delete</th>
 
   <% courses.each do |course| %>
 
-    <tr class="table-row-link" data-url="<%= course_path(course) %>">
-      <td><%= course.id %></td>
-      <td><%= course.title %></td>
-      <td><%= course.description %></td>
-      <td><%= course.students.count %></td>
-      <td><a src="#" action='course-delete' id="<%= course.title.parameterize
-       %>" title="<%= course.title %>">Remove</a></td>
+  <tr class="table-row-link" data-url="<%= course_path(course) %>">
+    <td><%= course.id %></td>
+    <td><%= course.title %></td>
+    <td><%= course.description %></td>
+    <td><%= course.students.count %></td>
+    <td style="text-align: center"><a src="#" action='course-delete' id="<%= course.title.parameterize
+      %>" title="<%= course.title %>"><span class="glyphicon glyphicon-remove remove-icon" aria-hidden="true"></span></a></td>
+
     </tr>
 
-  <% end %>
+    <% end %>
 
-</table> <!-- End of table -->
+  </table> <!-- End of table -->
