@@ -18,20 +18,20 @@
 
     <br>
 
-    <p>Hello <%= @student.name %>,</p>
+    <p>Hello <%= @student.name.split(" ").first %>,</p>
 
-    <p><%= @current_user.name %> has invited you to join the <strong><em><%= @course.title %></em></strong> course in Afterthough.</p>
-
-    <br>
-
-    Please visit <%= link_to "Afterthought Enrollment", enrollment_confirmation_url(@enrollment.confirm_token) %> to enroll in the course.
+    <p><%= @current_user.name %> has invited you to join the <strong><em><%= @course.title %></em></strong> course in Afterthought.</p>
 
     <br>
+
+    Please visit <%= link_to "Afterthought Enroll", enrollment_confirmation_url(@enrollment.confirm_token) %> to enroll in the course.
+
+    <br>
     <br>
 
-    <div style="float: right">
+    <div style="float: left">
       <footer>
-        Thank you,<br>
+        Thank you,<br><br>
         <strong>The Afterthought Team</strong>
       </footer>
     </div>
