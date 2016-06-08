@@ -62,3 +62,7 @@
 .student-list {
   display: none;
 }
+
+#create-lecture {
+  margin-top: 5px;
+}
