@@ -5,7 +5,13 @@ class StudentsController < ApplicationController
   end
 
   def update
-
+    if current_user.update(student_custom_params)
+      flash[:success] = "Your information has been successfully updated"
+      redirect_to courses_path
+    else
+      flash[:danger] = "Oh no! Edit failed."
+      redirect_to edit_student_path(current_user)
+    end
   end
 
   def student_autocomplete
@@ -38,5 +44,9 @@ class StudentsController < ApplicationController
     title_hash["label"] = label_type
     title_hash["category"] = category_type
     data << title_hash
+  end
+
+  def student_custom_params
+    params.require(:student).permit(:name, :password, :password_confirmation, :email)
   end
 end
