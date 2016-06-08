@@ -21,6 +21,7 @@ class EnrollmentsController < ApplicationController
 
   def confirm_email
     enrollment = Enrollment.find_by_confirm_token(params[:confirmation_token])
+    enrollment.confirm_token = nil
     @student = Student.find(enrollment.student_placeholder)
     enrollment.student = @student
     enrollment.save
