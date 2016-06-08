@@ -1,0 +1,8 @@
+Hello <%= @student.name.split(" ").first %>,
+
+<%= @current_user.name %> has invited you to join the <%= @course.title%> course in Afterthought.
+
+Please visit <%= link_to "Afterthought Enroll", enrollment_confirmation_url(@enrollment.confirm_token) %> to enroll in the course.
+
+Thank you,
+The Afterthought Team
