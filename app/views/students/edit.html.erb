@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col-xs-5" style="min-width: 275px">
+
+    <h2 class="text-center">Hello <%= @current_user.name %></h2>
+    <p class="text-center">Edit your information here.</p>
+    <br>
+    <%= render partial: 'shared/flash' %>
+
+    <br>
+
+    <div id="password-for-edit">
+      <%= form_for @current_user do |f| %>
+      <div class="form-group">
+        <%= f.label :password, class: "control-label" %>
+        <%= f.password_field :password, class: "form-control", placeholder: "New Password" %>
+      </div>
+      <% end %>
+      <br>
+    </div>
+
+    <%= form_for @current_user do |f| %>
+    <div class="form-group">
+      <%= f.label :name, "Full Name", class: "control-label" %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+
+      <div class="form-group">
+          <%= f.submit "Change Name", class: "btn btn-submit edit-user" %>
+      </div>
+    <% end %>
+
+    <br>
+
+    <%= form_for @current_user do |f| %>
+    <div class="form-group">
+      <%= f.label :password, class: "control-label" %>
+      <%= f.password_field :password, class: "form-control", placeholder: "New Password" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password_confirmation, class: "control-label" %>
+      <%= f.password_field :password_confirmation, class: "form-control", placeholder: "New Password Confirmation" %>
+    </div>
+
+      <div class="form-group">
+          <%= f.submit "Change Password", class: "btn btn-submit edit-user" %>
+      </div>
+    <% end %>
+
+    <br>
+
+    <%= form_for @current_user do |f| %>
+    <div class="form-group">
+      <%= f.label :email, class: "control-label" %>
+      <%= f.text_field :email, class: "form-control" %>
+    </div>
+      <div class="form-group">
+          <%= f.submit "Change email", class: "btn btn-submit edit-user" %>
+      </div>
+    <% end %>
+
+    <br>
+
+  </div>
+</div>

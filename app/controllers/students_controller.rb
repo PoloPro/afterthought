@@ -1,6 +1,11 @@
 class StudentsController < ApplicationController
 
-  def home
+  def edit
+    @user = Student.new
+  end
+
+  def update
+
   end
 
   def student_autocomplete

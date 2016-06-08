@@ -1,6 +1,10 @@
 class InstructorsController < ApplicationController
 
-  def home
+  def edit
+    @user = Instructor.new
   end
 
+  def update
+
+  end
 end
