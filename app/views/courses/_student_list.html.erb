@@ -1,10 +1,10 @@
 <% unless  students.empty? %>
   <ul class='div_common student-list'>
     <% students.each do |student| %>
-      <li>
+      <li id="<%= student.name.parameterize %>">
         <b><h4 class='student-list'><b><%= student.name %></b></h4>
         <p class='student-list'><%= student.email %></p>
-        <a src="#" action='remove-student' id="<%= student.id%>" name="<%= student.name %>" class='remove-student student-list text-muted'>Remove</a>
+        <a src="#" action='remove-student' course="<%= course.id %>" student-id="<%= student.id%>" name="<%= student.name %>" class='remove-student student-list text-muted'>Remove</a>
         <br><br>
       </li>
       <% end %>

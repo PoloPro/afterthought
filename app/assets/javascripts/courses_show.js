@@ -3,6 +3,7 @@ $(function() {
   autocompleteStudentSearch()
   autocompleteStudentEnter()
   autocompleteStudentClick()
+  clickStudentRemoveListener()
 });
 
 
@@ -111,20 +112,21 @@ var clickStudentRemoveListener = function() {
     e.stopPropagation()
     e.preventDefault()
     var studentName = $(this).attr('name')
-    var studentId = $(this).attr('id')
-    var confirmDelete = confirm("Are you sure you want to remove " + studentName + " from your course?")
+    var courseId = $(this).attr('course')
+    var studentId = $(this).attr('student-id')
+    var confirmDelete = confirm("Are you sure you want to remove " + studentName + " from this course?")
     if (confirmDelete) {
       $.ajax({
         method: "POST",
         url: "/remove_student",
-        data: {student_id: studentId},
+        data: {student_id: studentId, course_id: courseId},
         success: function(data){
-          // courseClass = "#" + data.stringifyTitle
-          // $(courseClass).parent().parent().remove()
-          // var courseAlert = "<div class='alert alert-warning'>" +
-          //   "You have left: " + data.title +
-          // "</div>"
-          // $('#find-course').html(courseAlert)
+          studentId = "#" + data.stringifyName
+          $(studentId).remove()
+          var studentRemoveAlert = "<div class='alert alert-info'>" +
+          "You have removed " + data.name + " from " + data.courseTitle +
+          "</div>"
+          $('#add-student-alerts').html(studentRemoveAlert)
         }
       })
     }

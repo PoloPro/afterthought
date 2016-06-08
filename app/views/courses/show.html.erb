@@ -22,7 +22,7 @@
   <%= render partial: "lecture_list", locals: { lectures: @lectures} %>
 
   <div>
-    <%= render partial: "student_list", locals: { students: @students} %>
+    <%= render partial: "student_list", locals: { students: @students, course: @course} %>
   </div>
 <% else %>
   <p class='text-muted'>
