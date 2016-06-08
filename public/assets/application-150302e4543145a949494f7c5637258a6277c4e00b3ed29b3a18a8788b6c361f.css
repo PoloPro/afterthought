@@ -1,0 +1,283 @@
+.remove-icon {
+  color: #c0c0c0;
+}
+
+.remove-icon:hover {
+  color:#ff0000; 
+  text-decoration:none; 
+  cursor:pointer;
+}
+
+#course-search-area {
+  border: 1px solid #c0c0c0;
+  padding: 15px;
+}
+
+#course-create-area {
+  border: 1px solid #c0c0c0;
+  padding: 15px;
+}
+
+#search {
+  margin-left: 5px;
+  padding-left: 5px;
+}
+
+#student-search {
+  margin-left: 5px;
+  padding-left: 5px;
+  padding-bottom: 5px;
+}
+
+.ui-autocomplete-category {
+  padding-left: 5px;
+  margin-left: 0px;
+  font-size: 1.1em;
+}
+
+
+.btn-search {
+  background-color: #3d004d;
+  color: #ffffff;
+  border-radius: 0 !important;
+}
+
+.btn-search:hover {
+  color: #9f82a7 !important;
+}
+
+#show-tips:hover {
+  cursor: pointer;
+}
+
+.panel-heading {
+}
+
+.panel {
+  border-color: #bfbfbf !important;
+}
+
+.course-create {
+  margin-top: 15px;
+}
+
+.under-widget {
+  font-family: Verdana, Arial, sans-serif !important;
+  font-size: 1.05em !important;
+  font-weight: 580 !important;
+  line-height: 1.5 !important;
+}
+
+#course-create-text {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  margin-left: 10px;
+  font-weight: 500;
+}
+
+.password-form {
+  margin-left: 10px;
+  margin-right: 10px
+}
+
+#student-display {
+  margin-left: 10px;
+}
+
+.student-list {
+  display: none;
+}
+
+#create-lecture {
+  margin-top: 5px;
+}
+
+.div_common {
+  -webkit-column-count: 1;
+  -moz-column-count: 1;
+  column-count: 1;
+  -webkit-column-gap: 30px;
+  column-gap: 15px;
+  -moz-column-gap: 30px;
+}
+
+/*uncomment the following lines to make courses show page student remove button inline with student email*/
+/*p.student-list, a.remove-student {
+  display: inline;
+}
+
+a.remove-student {
+  margin-left: 10px;
+  }*/
+/*!
+ * Start Bootstrap - Simple Sidebar (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+
+ #wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 214px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 214px;
+    width: 0;
+    height: 100%;
+    margin-left: -214px;
+    overflow-y: auto;
+    background: #3d004d;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 214px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -214px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 214px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    font-size: 16px;
+    color: #9f82a7;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 20px;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #9f82a7;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+
+@media(min-width:600px) {
+    #wrapper {
+        padding-left: 214px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 214px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}
+.btn-submit {
+  background-color: #3d004d;
+  color: #ffffff;
+  border-radius: 0 !important;
+}
+
+.btn-submit:hover {
+  color: #9f82a7 !important;
+}
+
+#show-tips:hover {
+  cursor: pointer;
+}
+
+.btn-edit {
+  background-color: #3d004d;
+  color: #ffffff;
+  border-radius: 0 !important;
+  margin-right: 5px;
+}
+
+.btn-edit:hover {
+  color: #9f82a7 !important;
+}
+.table-row-link {
+  cursor: pointer;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+
+
+* {
+  font-family: 'Lato', sans-serif;
+}

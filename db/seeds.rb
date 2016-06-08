@@ -8,14 +8,30 @@
 
 i_chris = Instructor.create(name: "Chris McCord", email: "chrismccord@phoenix.com", password: "password")
 i_sandi = Instructor.create(name: "Sandi Metz", email: "sandimetz@object.com", password: "password")
+i_1 = Instructor.create(name: "Obi-Wan Kenobi", email: "obiwan@tatooine.com", password: "password")
+i_2 = Instructor.create(name: "Qui Gon Jinn", email: "quigon@jedicouncil.com", password: "password")
+i_3 = Instructor.create(name: "Yoda", email: "yoda@dagoba.com", password: "password")
 
 c_elixir = Course.create(title: "Elixir", description: "Learn Elixir with Phoenix", password: "password")
+c_1 = Course.create(title: "The Force and You", description: "An introductory look at the Force and its users", password: "password")
+c_2 = Course.create(title: "Lightsaber Dueling 101", description: "Basics of positioning, defense, and wild flailing", password: "password")
+c_3 = Course.create(title: "Losing a Hand, Saving a Land", description: "A seminar discussing the most popular pastime of Jedi everywhere--getting a hand cut off.", password: "password")
 
 s_john = Student.create(name: "Louis Clarke", email: "pocahontas@explorers.com", password: "password")
 s_belle = Student.create(name: "Belle Storison", email: "codeasoldastime@storison.com", password: "password")
+s_1 = Student.create(name: "Luke Skywalker", email: "luke@tatooine.com", password: "password")
+s_2 = Student.create(name: "Rey", email: "rey@jakku.com", password: "password")
+s_3 = Student.create(name: "Han Solo", email: "solo@corellia.com", password: "password")
+s_4 = Student.create(name: "R2-D2", email: "r2@d2.com", password: "password")
 
 c_elixir.instructors << i_chris
 c_elixir.students << s_john << s_belle
+c_1.instructors << i_1
+c_1.students << s_2 << s_3
+c_2.instructors << i_2 << i_3
+c_2.students << s_1 << s_2 
+c_3.instructors << i_3
+c_3.students << s_1 << s_2 << s_3 << s_4
 
 ####unlocked lecture with two unlocked reviews and two students
 l_match = Lecture.create(title: "Match statements in Elixir", description: "one of the great features of Elixir", instructor: i_chris, course: c_elixir, locked: false, finish_time: (Time.now - 1.hours))
