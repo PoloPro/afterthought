@@ -11,6 +11,12 @@ class LecturesController < ApplicationController
     @lecture_timer = LectureTimer.new(@lecture)
   end
 
+  def get_remaining_time
+    lecture = Lecture.find(params[:id])
+    lecture_timer = LectureTimer.new(lecture)
+    render json: { lecture_timer: lecture_timer }
+  end
+
   private
 
   def set_current_user
