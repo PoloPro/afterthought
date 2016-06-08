@@ -75,7 +75,7 @@ var autocompleteClick = function() {
 }
 
 var addCourseTable = function(data) {
-  $('#find-course').html("<div class='panel panel-default'>" +
+  $('#find-course').html("<br><div class='panel panel-default'>" +
     "<div class='panel-heading'>Search Result</div>" +
     "<div class='panel-body'>" +
     "<table class='table table-hover table-responsive'>" +

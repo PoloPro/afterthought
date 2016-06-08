@@ -4,11 +4,18 @@
 <%= render 'shared/flash' %>
 <%= render partial: "courses", locals: { courses: @courses} %>
 
-<%= render partial: "autocomplete", locals: { courses: @courses, current_user: @current_user } %>
+<div id="course-search-area">
+  <p>Search for a course</p>
+  <%= render partial: "autocomplete", locals: { courses: @courses, current_user: @current_user } %>
+</div>
 
+<br>
 
 <% if current_user.class.to_s == "Instructor" %>
+<div id="course-create-area">
+  <p>Create a new course</p>
   <%= render "create_button" %>
+</div>
 <% end %>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
