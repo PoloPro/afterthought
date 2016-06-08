@@ -3,8 +3,8 @@ class Lecture < ApplicationRecord
   belongs_to :instructor
   belongs_to :course
 
-  validates :title, presence: true
-  validates :description, presence: true
+  validates :title, presence: true, length: { minimum: 5, maximum: 50 }
+  validates :description, presence: true, length: { minimum: 10, maximum: 150 }
   validates :finish_time, presence: true
 
   def get_reviews
