@@ -36,6 +36,17 @@
 
 <%= button_to "Send Feedback (for testing)", { controller: "feedback", action: "collate_and_send", id: @lecture.id }, method: :post, class: "btn btn-submit" %>
 
+<% if @current_user.courses.include?(@lecture.course) && @current_user.class == Instructor %>
+  <h3>Current Feedback</h3><br>
+  <%= render partial: "reviews/reviews", locals: { reviews: @lecture.reviews} %>
+<% elsif @current_user.class == Instructor %>
+<p class='text-muted'>
+  <br>
+  Instructors who have joined this course can see the current feedback. You can join by clicking "Courses" on the sidebar, searching for the course, and submitting the course password
+</p>
+<% end %>
+
+
 
 <!-- Progress bar decrementer -->
 <script>
@@ -86,7 +97,3 @@
     })
   }
 </script>
-
-
-
-
