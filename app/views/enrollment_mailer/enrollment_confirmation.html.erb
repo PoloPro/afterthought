@@ -1,5 +1,41 @@
-Hi <%= @student.name %>,
-<br><br>
-<%= @current_user.name %> has invited you to join the <%= @course.title %> course in Afterthought™! To enroll, click the URL below.
-<br><br>
-<%= link_to "Afterthought Course Enroll", enrollment_confirmation_url(@enrollment.confirm_token) %>
+<head>
+  <meta name="viewport" content="width=device-width" />
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Afterthought Course Enrollment</title>
+
+</head>
+
+
+<body>
+
+  <!-- Body content -->
+  <div style="font: 14px sans-serif;">
+
+    <br>
+
+    <%= image_tag attachments['afterthought_logo.png'].url, alt: 'Afterthought' -%>
+
+    <br>
+
+    <p>Hello <%= @student.name.split(" ").first %>,</p>
+
+    <p><%= @current_user.name %> has invited you to join the <strong><em><%= @course.title %></em></strong> course in Afterthought.</p>
+
+    <br>
+
+    Please visit <%= link_to "Afterthought Enroll", enrollment_confirmation_url(@enrollment.confirm_token) %> to enroll in the course.
+
+    <br>
+    <br>
+
+    <div style="float: left">
+      <footer>
+        Thank you,<br><br>
+        <strong>The Afterthought Team</strong>
+      </footer>
+    </div>
+  </div> <!-- End of Body Content -->
+
+
+</body>
