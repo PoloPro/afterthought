@@ -1,22 +1,27 @@
 <h1>Sign In</h1>
+<br>
 
-<%= render 'shared/flash' %>
+<div class="row">
+<div class="col-xs-4" style="min-width: 275px">
+    <%= render 'shared/flash' %>
 
-<div id="user-toggle">
-  <%= label_tag "instructor", "Instructor" %>
-  <%= radio_button_tag "session", "instructor", "instructor" %>
-  <%= label_tag "student", "Student" %>
-  <%= radio_button_tag "session", "student", "student" %>
-</div>
+    <div id="user-toggle">
+      <%= label_tag "instructor", "Instructor" %>
+      <%= radio_button_tag "session", "instructor", "instructor" %>
+      <%= label_tag "student", "Student" %>
+      <%= radio_button_tag "session", "student", "student" %>
+    </div>
 
-<div id="student-signin">
-  <%= form_for(@student, url: sessions_path) do |f| %>
-    <%= render partial: "shared/student_session", locals: {f: f, user: @student} %>
-  <% end %>
-</div>
+    <div id="student-signin">
+      <%= form_for(@student, url: sessions_path) do |f| %>
+      <%= render partial: "shared/student_session", locals: {f: f, user: @student} %>
+      <% end %>
+    </div>
 
-<div id="instructor-signin">
-  <%= form_for(@instructor, url: sessions_path) do |f| %>
-    <%= render partial: "shared/instructor_session", locals: {f: f, user: @instructor} %>
-  <% end %>
+    <div id="instructor-signin">
+      <%= form_for(@instructor, url: sessions_path) do |f| %>
+      <%= render partial: "shared/instructor_session", locals: {f: f, user: @instructor} %>
+      <% end %>
+    </div>
+  </div>
 </div>

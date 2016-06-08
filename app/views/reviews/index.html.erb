@@ -1,1 +1,9 @@
+<% if @current_user.class == Student %>
+<h1>Your Feedback</h1>
+<% else %>
+<h1>My Feedback</h1>
+<% end %>
+
+<br>
+
 <%= render partial: "reviews", locals: { reviews: @reviews, current_user: @current_user } %>

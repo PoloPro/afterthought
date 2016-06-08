@@ -8,17 +8,17 @@ Rails.application.routes.draw do
   get "sessions/destroy"
 
   # Signup pages
-  get "/signup",                    to: "student_registrations#new"
-  get "/instructor_signup",         to: "instructor_registrations#new"
+  get "/signup",                      to: "student_registrations#new"
+  get "/instructor_signup",           to: "instructor_registrations#new"
   resources "student_registrations",    only: [:create]
   resources "instructor_registrations", only: [:create]
   resources "sessions", only: [:create]
-  delete "/signout",                to: "sessions#destroy"
-  get "/login",                     to: "sessions#new"
+  delete "/signout",                  to: "sessions#destroy"
+  get "/login",                       to: "sessions#new"
 
   # Home/landing pages
-  get "instructors/home",           to: "instructors#home"
-  get "students/home",              to: "students#home"
+  get "instructors/home",             to: "instructors#home"
+  get "students/home",                to: "students#home"
 
   # Lectures routes nested under courses
   resources :courses, only: [:index, :show, :new, :create] do
@@ -35,13 +35,15 @@ Rails.application.routes.draw do
   post "/add_course",               to: "course_autocompletes#add_course"
 
   # Lectures
-  get "lectures/index",             to: "lectures#index",   as: "lectures"
+  get "lectures/index",               to: "lectures#index",   as: "lectures"
+  get "lectures/get_remaining_time",  to: "lectures#get_remaining_time"
+
 
   # Reviews
   resources :reviews, only: [:index, :create, :destroy]
-  post "/reviews/anonymous",        to: "reviews#make_review_anonymous"
-  post "/reviews/named",            to: "reviews#make_review_named"
-  post "/feedback/send",            to: "feedback#collate_and_send"
+  post "/reviews/anonymous",          to: "reviews#make_review_anonymous"
+  post "/reviews/named",              to: "reviews#make_review_named"
+  post "/feedback/send",              to: "feedback#collate_and_send"
 
   #Students
   get "/student_autocomplete",      to: "students#student_autocomplete"
@@ -49,4 +51,5 @@ Rails.application.routes.draw do
   #Enrollments
   resources :enrollments, only: [:create]
   get '/enrollments/:confirmation_token' => 'enrollments#confirm_email', as: 'enrollment_confirmation'
+
 end

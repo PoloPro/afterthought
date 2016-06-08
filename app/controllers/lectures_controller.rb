@@ -23,6 +23,11 @@ class LecturesController < ApplicationController
     @lecture.finish_time = Time.now + finish_in_minutes
     @lecture.save
     redirect_to course_lecture_path(@lecture.course, @lecture)
+
+  def get_remaining_time
+    lecture = Lecture.find(params[:id])
+    lecture_timer = LectureTimer.new(lecture)
+    render json: { lecture_timer: lecture_timer }
   end
 
   private
