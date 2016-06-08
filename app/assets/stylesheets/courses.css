@@ -68,8 +68,8 @@
 }
 
 .div_common {
--webkit-column-count: 2;
--moz-column-count: 2;
+-webkit-column-count: 1;
+-moz-column-count: 1;
 column-count: 1;
 -webkit-column-gap: 30px;
 column-gap: 15px;

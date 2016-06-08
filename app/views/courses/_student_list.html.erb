@@ -4,7 +4,9 @@
       <li id="<%= student.name.parameterize %>">
         <b><h4 class='student-list'><b><%= student.name %></b></h4>
         <p class='student-list'><%= student.email %></p>
-        <a src="#" action='remove-student' course="<%= course.id %>" student-id="<%= student.id%>" name="<%= student.name %>" class='remove-student student-list text-muted'>Remove</a>
+        <% if current_user.courses.include?(course) && current_user.class == Instructor %>
+          <a src="#" action='remove-student' course="<%= course.id %>" student-id="<%= student.id%>" name="<%= student.name %>" class='remove-student student-list text-muted'>Remove</a>
+        <% end %>
         <br><br>
       </li>
       <% end %>
