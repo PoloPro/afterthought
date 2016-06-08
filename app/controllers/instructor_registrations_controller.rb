@@ -1,6 +1,10 @@
 class InstructorRegistrationsController < ApplicationController
   skip_before_action :require_login
   def new
+    if current_user.class == Instructor || current_user.class == Student
+      flash[:notice] = "You must be signed out to register as a new user"
+      redirect_to courses_path
+    end
     @instructor = Instructor.new
   end
 

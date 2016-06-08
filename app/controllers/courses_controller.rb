@@ -19,7 +19,6 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.new(course_params)
-    binding.pry
     if @course.save
       current_user.courses << @course
       flash[:success] = "Course created successfully"

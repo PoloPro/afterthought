@@ -41,5 +41,10 @@ Rails.application.routes.draw do
   post "/reviews/named",            to: "reviews#make_review_named"
   post "/feedback/send",            to: "feedback#collate_and_send"
 
+  #Students
   get "/student_autocomplete",      to: "students#student_autocomplete"
+
+  #Enrollments
+  resources :enrollments, only: [:create]
+  get '/enrollments/:confirmation_token' => 'enrollments#confirm_email', as: 'enrollment_confirmation'
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160606183839) do
+ActiveRecord::Schema.define(version: 20160607232817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,10 +23,11 @@ ActiveRecord::Schema.define(version: 20160606183839) do
   end
 
   create_table "enrollments", force: :cascade do |t|
-    t.integer "student_id"
     t.integer "course_id"
+    t.string  "confirm_token"
+    t.integer "student_placeholder"
+    t.integer "student_id"
     t.index ["course_id"], name: "index_enrollments_on_course_id", using: :btree
-    t.index ["student_id"], name: "index_enrollments_on_student_id", using: :btree
   end
 
   create_table "instructor_courses", force: :cascade do |t|
@@ -56,13 +57,11 @@ ActiveRecord::Schema.define(version: 20160606183839) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer  "student_id"
-    t.integer  "lecture_id"
-    t.text     "content"
-    t.boolean  "locked"
-    t.boolean  "anonymous",  default: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.integer "student_id"
+    t.integer "lecture_id"
+    t.text    "content"
+    t.boolean "locked"
+    t.boolean "anonymous",  default: false
     t.index ["lecture_id"], name: "index_reviews_on_lecture_id", using: :btree
     t.index ["student_id"], name: "index_reviews_on_student_id", using: :btree
   end
@@ -74,7 +73,6 @@ ActiveRecord::Schema.define(version: 20160606183839) do
   end
 
   add_foreign_key "enrollments", "courses"
-  add_foreign_key "enrollments", "students"
   add_foreign_key "instructor_courses", "courses"
   add_foreign_key "instructor_courses", "instructors"
   add_foreign_key "lectures", "courses"
