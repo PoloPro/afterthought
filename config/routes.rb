@@ -26,11 +26,13 @@ Rails.application.routes.draw do
   end
 
   # Courses
-  get "/courses_autocomplete",      to: "courses#courses_autocomplete"
-  post "/display_joinable_courses", to: "courses#display_joinable_courses"
-  post "/add_course",               to: "courses#add_course"
-  post "/check_course_permissions", to: "courses#check_course_permissions"
   post "/remove_course",            to: "courses#remove_course"
+
+  #CourseAutocomplete
+  get "/courses_autocomplete",      to: "course_autocompletes#courses_autocomplete"
+  post "/display_joinable_courses", to: "course_autocompletes#display_joinable_courses"
+  post "/check_course_permissions", to: "course_autocompletes#check_course_permissions"
+  post "/add_course",               to: "course_autocompletes#add_course"
 
   # Lectures
   get "lectures/index",             to: "lectures#index",   as: "lectures"
