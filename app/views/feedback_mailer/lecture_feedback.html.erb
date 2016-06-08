@@ -3,40 +3,49 @@
 
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <title>Afterthought Feedback</title>
-  
-  <style>
-
-  </style>
 
 </head>
 
 <body>
 
-  <%= image_tag attachments['afterthought_logo.png'].url, alt: 'Afterthought' -%>
+  <!-- Body content -->
+  <div style="font: 14px sans-serif;">
 
-  <h4>Hello <%= @current_user.name %>,</h4>
-  <p>Below is the feedback for your lecture <strong><em><%= @lecture.title %></em></strong>, from <%= @lecture.format_end_time %>.</p>
+    <br>
 
-  <hr> 
+    <%= image_tag attachments['afterthought_logo.png'].url, alt: 'Afterthought' -%>
 
-  <% @reviews.each do |content, student| %>
-  <blockquote>
-    <p><%= content %></p>
-    <footer>- <%= student %></footer>
-  </blockquote>
-  <% end %>
+    <br>
 
-  <hr>
+    <p>Hello <%= @current_user.name %>,</p>
 
-  Please visit <%= link_to "Afterthought", @lecture_url %> to manage your courses and see feedback for all of your lectures.
+    <p>Below is the feedback for your lecture <strong><em><%= @lecture.title %></em></strong>, from <%= @lecture.format_end_time %>.</p>
 
-  <br>
-  <br>
+    <% @reviews.each do |content, student| %>
+    <div style="font: 14px sans-serif; background-color: #3d004d; color: #ffffff"> 
+      <br>
+      <blockquote>
+        <p><%= content %></p>
+        <footer><em><%= student %></em></footer>
+      </blockquote>
+      <br>
+    </div>
+    <% end %>
 
-  <footer>
-    Thank you!
-    <h4>The Afterthought Team</h4>
-  </footer>
+    <br>
+
+    Please visit <%= link_to "Afterthought", @lecture_url %> to manage your courses and see feedback for all of your lectures.
+
+    <br>
+    <br>
+
+    <div style="float: right">
+      <footer>
+        Thank you,<br>
+        <strong>The Afterthought Team</strong>
+      </footer>
+    </div>
+  </div> <!-- End of Body Content -->
 
 
 </body>
