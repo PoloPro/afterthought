@@ -12,13 +12,12 @@
 <br>
 <hr>
 
+<%= render "shared/flash" %>
+
 <% if @current_user.class == Student %>
 
 <div id="feedback-area">
   <!-- Flash message for form failure -->
-  <% flash.each do |key, value| %>
-  <%= content_tag :div, value, class: "flash #{key}" %>
-  <% end %>
 
   <div id="review-boolean" type="hidden" data-has-review="<%= current_user.has_review?(@lecture.id) %>"></div>
 
@@ -31,7 +30,9 @@
 
 <% end %>
 
-<%= button_to "Send Feedback", { controller: "feedback", action: "collate_and_send", id: @lecture.id }, method: :post %>
+<br>
+
+<%= button_to "Send Feedback (for testing)", { controller: "feedback", action: "collate_and_send", id: @lecture.id }, method: :post, class: "btn btn-submit" %>
 
 
 
