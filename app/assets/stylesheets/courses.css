@@ -62,3 +62,25 @@
 .student-list {
   display: none;
 }
+
+#create-lecture {
+  margin-top: 5px;
+}
+
+.div_common {
+-webkit-column-count: 2;
+-moz-column-count: 2;
+column-count: 2;
+-webkit-column-gap: 30px;
+column-gap: 30px;
+-moz-column-gap: 30px;
+}
+
+/*uncomment the following lines to make courses show page student remove button inline with student email*/
+/*p.student-list, a.remove-student {
+  display: inline;
+}
+
+a.remove-student {
+  margin-left: 10px;
+}*/

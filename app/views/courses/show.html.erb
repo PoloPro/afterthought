@@ -1,41 +1,28 @@
-<h1><em>Course: <%= @course.title %></em></h1>
+<h1 course-id="<%= @course.id %>"><em><%= @course.title %></em></h1>
 <h3><small><%= @course.description %></small></h3>
 <hr>
 
-<div class="ui-widget">
-  <label for="search">
-    <button class='btn btn-xs btn-search'>Invite Student to Course</button>
-  </label>
-  <input id="student-search" size="30" placeholder="find student by name or email">
-</div>
+<%= render 'shared/flash' %>
+<div id="add-student-alerts"></div>
 
+<% if @current_user.courses.include?(@course) && @current_user.class == Instructor %>
+  <%= render partial: "course_show_buttons", locals: { course: @course} %>
+<% elsif @current_user.class == Instructor %>
+  <p class='text-muted'>
+    Only instructors who have joined this course may add students and lectures. You can find the right page by clicking "Courses" on the sidebar
+  </p>
+<% end %>
 <hr>
 
 <br>
-
-<% if @lectures %>
+<% unless @lectures.empty? %>
   <button id="lecture-display" class='btn btn-lg btn-submit '>See Lectures</button>
   <button id="student-display" class='btn btn-lg btn-submit '>See Students</button>
-  <br><br>
-  <div>
-    <% @lectures.each do |lecture| %>
-      <h3 class='lecture-list'><%= link_to lecture.title, course_lecture_path(lecture.course, lecture)   %></h3>
-      <p class='lecture-list'><%= lecture.description %></p>
-    <% end %>
-  </div>
+
+  <%= render partial: "lecture_list", locals: { lectures: @lectures} %>
 
   <div>
-    <% if @students %>
-      <% @students.each do |student| %>
-        <b><h4 class='student-list'><b><%= student.name %></b></h4>
-        <p class='student-list'><%= student.email %></p>
-        <br>
-      <% end %>
-    <% else %>
-      <p class='text-muted'>
-        There are currently no students in this course
-      </p>
-    <% end %>
+    <%= render partial: "student_list", locals: { students: @students} %>
   </div>
 <% else %>
   <p class='text-muted'>

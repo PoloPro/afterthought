@@ -1,0 +1,7 @@
+<br><br>
+<div>
+  <% lectures.each do |lecture| %>
+    <h3 class='lecture-list'><%= link_to lecture.title, course_lecture_path(lecture.course, lecture)   %></h3>
+    <p class='lecture-list'><%= lecture.description %></p>
+  <% end %>
+</div>

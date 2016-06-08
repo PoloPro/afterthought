@@ -1,0 +1,32 @@
+<h1>Create New Lecture</h1>
+
+<br>
+<%= render 'shared/flash' %>
+
+<%= form_for @lecture, url: course_lectures_path(id: @course), method: :post do |f| %>
+
+  <div class="form-group">
+    <%= f.label :title, class: "control-label" %>
+        <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description, class: "control-label" %>
+        <%= f.text_area :description, class: "form-control", placeholder: "Description" %>
+  </div>
+
+  <%= f.hidden_field :instructor_id, value: @current_user.id %>
+  <%= f.hidden_field :course_id, value: @course.id %>
+
+
+  <div class="form-group">
+    <%= f.label :finish_time, "Time Until Lecture Finish (in minutes)", class: "control-label" %>
+      <%= f.text_field :finish_time, class: "form-control", placeholder: "Finish Time" %>
+  </div>
+
+  <div class="form-group">
+    <div class="">
+      <%= f.submit "Create Lecture", class: "btn btn-submit" %>
+    </div>
+  </div>
+<% end %>

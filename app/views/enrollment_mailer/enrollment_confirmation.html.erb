@@ -1,0 +1,5 @@
+Hi <%= @student.name %>,
+<br><br>
+<%= @current_user.name %> has invited you to join the <%= @course.title %> course in Afterthought™! To enroll, click the URL below.
+<br><br>
+<%= link_to "Afterthought Course Enroll", enrollment_confirmation_url(@enrollment.confirm_token) %>

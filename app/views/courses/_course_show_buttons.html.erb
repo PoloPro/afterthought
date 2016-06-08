@@ -1,0 +1,12 @@
+<div class="ui-widget">
+  <label for="search">
+    <button id='autocomplete-student-search'class='btn btn-xs btn-search'>Invite Student to Course</button>
+  </label>
+  <input id="student-search" size="30" placeholder="find student by name or email">
+</div>
+
+<div class="course-create">
+  <%= form_tag new_course_lecture_path(course), method: "get" do %>
+    <button id='create-lecture'class='ui-widget btn btn-search'>Create New Lecture</button>
+  <% end %>
+</div>
