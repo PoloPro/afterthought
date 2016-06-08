@@ -8,9 +8,11 @@
     <div id="user-toggle">
       <%= label_tag "instructor", "Instructor" %>
       <%= radio_button_tag "session", "instructor", "instructor" %>
-      <%= label_tag "student", "Student" %>
-      <%= radio_button_tag "session", "student", "student" %>
+      <span style='margin-left:7px'><%= label_tag "student", "Student" %>
+      <%= radio_button_tag "session", "student", "student" %></span>
     </div>
+
+    <br>
 
     <div id="student-signin">
       <%= form_for(@student, url: sessions_path) do |f| %>

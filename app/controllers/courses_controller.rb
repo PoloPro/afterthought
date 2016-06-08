@@ -19,6 +19,7 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.new(course_params)
+    @course.title = @course.title.titleize
     if @course.save
       current_user.courses << @course
       flash[:success] = "Course created successfully"
