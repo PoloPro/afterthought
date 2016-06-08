@@ -16,10 +16,6 @@ Rails.application.routes.draw do
   delete "/signout",                  to: "sessions#destroy"
   get "/login",                       to: "sessions#new"
 
-  # Home/landing pages
-  get "instructors/home",             to: "instructors#home"
-  get "students/home",                to: "students#home"
-
   # Lectures routes nested under courses
   resources :courses, only: [:index, :show, :new, :create] do
     resources :lectures, only: [:new, :create, :show]

@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       student = Student.find_by(email: params[:student][:email])
       if student && student.authenticate(params[:student][:password])
         session[:student_id] = student.id
-        redirect_to students_home_path
+        redirect_to courses_path
       else
         login_fail
       end
@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
       instructor = Instructor.find_by(email: params[:instructor][:email])
       if instructor && instructor.authenticate(params[:instructor][:password])
         session[:instructor_id] = instructor.id
-        redirect_to  instructors_home_path
+        redirect_to courses_path
       else
         login_fail
       end

@@ -25,12 +25,9 @@ class ApplicationController < ActionController::Base
   end
 
   def check_if_logged_in
-    if session[:student_id]
+    if session[:student_id] || session[:instructor_id]
       flash[:notice] = "You are already signed in"
-      redirect_to students_home_path
-    elsif session[:instructor_id]
-      flash[:notice] = "You are already signed in"
-      redirect_to instructors_home_path
+      redirect_to courses_path
     end
   end
 

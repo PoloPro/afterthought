@@ -1,8 +1,5 @@
 class StudentsController < ApplicationController
 
-  def home
-  end
-
   def student_autocomplete
     students = Student.all
     data = []
