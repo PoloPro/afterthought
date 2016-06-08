@@ -104,3 +104,29 @@ var addStudentFailText = function(data) {
   "</div>"
   $('#add-student-alerts').html(courseAlert)
 }
+
+
+var clickStudentRemoveListener = function() {
+  $("a[action='remove-student']").click(function(e) {
+    e.stopPropagation()
+    e.preventDefault()
+    var studentName = $(this).attr('name')
+    var studentId = $(this).attr('id')
+    var confirmDelete = confirm("Are you sure you want to remove " + studentName + " from your course?")
+    if (confirmDelete) {
+      $.ajax({
+        method: "POST",
+        url: "/remove_student",
+        data: {student_id: studentId},
+        success: function(data){
+          // courseClass = "#" + data.stringifyTitle
+          // $(courseClass).parent().parent().remove()
+          // var courseAlert = "<div class='alert alert-warning'>" +
+          //   "You have left: " + data.title +
+          // "</div>"
+          // $('#find-course').html(courseAlert)
+        }
+      })
+    }
+  })
+}
