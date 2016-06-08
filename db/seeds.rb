@@ -6,13 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-i_chris = Instructor.create(name: "Chris McCord", email: "chrismccord@gmail.com", password: "password")
-i_sandi = Instructor.create(name: "Sandi Metz", email: "sandimetz@gmail.com", password: "password")
+i_chris = Instructor.create(name: "Chris McCord", email: "chrismccord@phoenix.com", password: "password")
+i_sandi = Instructor.create(name: "Sandi Metz", email: "sandimetz@object.com", password: "password")
 
 c_elixir = Course.create(title: "Elixir", description: "Learn Elixir with Phoenix", password: "password")
 
-s_john = Student.create(name: "Louis Clarke", email: "pocahontas@gmail.com", password: "password")
-s_belle = Student.create(name: "Belle Storison", email: "codeasoldastime@gmail.com", password: "password")
+s_john = Student.create(name: "Louis Clarke", email: "pocahontas@explorers.com", password: "password")
+s_belle = Student.create(name: "Belle Storison", email: "codeasoldastime@storison.com", password: "password")
 
 c_elixir.instructors << i_chris
 c_elixir.students << s_john << s_belle
