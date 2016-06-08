@@ -1,5 +1,13 @@
 class StudentsController < ApplicationController
 
+  def edit
+    @user = Student.new
+  end
+
+  def update
+
+  end
+
   def student_autocomplete
     students = Student.all
     data = []

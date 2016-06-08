@@ -6,7 +6,13 @@
       </a>
     </li>
     <li>
-      <a href="<%= root_path %>"><%= current_user.name %></a>
+      <% if current_user.class == Instructor %>
+        <a href="<%= edit_instructor_path(current_user) %>"><%= current_user.name %></a>
+      <% elsif current_user.class == Student %>
+        <a href="<%= edit_student_path(current_user) %>"><%= current_user.name %></a>
+      <% else %>
+        <a href="<%= login_path %>">Guest</a>
+      <% end %>
     </li>
 
     <li>

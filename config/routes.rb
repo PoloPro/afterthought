@@ -42,8 +42,13 @@ Rails.application.routes.draw do
   post "/feedback/send",              to: "feedback#collate_and_send"
 
   #Students
+  resources :students, only: [:edit, :update]
   get "/student_autocomplete",       to: "students#student_autocomplete"
   post "/remove_student",            to: "students#remove_student"
+
+  #Instructors
+  resources :instructors, only: [:edit, :update]
+
   #Enrollments
   resources :enrollments, only: [:create]
   get '/enrollments/:confirmation_token' => 'enrollments#confirm_email', as: 'enrollment_confirmation'
