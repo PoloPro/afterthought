@@ -1,4 +1,15 @@
-Hello NAME,
+Hello <%= @current_user.name %>,
 
 Below is the feedback for your lecture <%= @lecture.title %>.
 
+<% @reviews.each do |content, student| %>
+  ****
+  <%= content %>
+  - <%= student %>
+  ****
+<% end %>
+----
+Please visit <%= link_to "Afterthought", @lecture_url %> to manage your courses and see feedback for all of your lectures.
+----
+Thank you,
+The Afterthought Team
