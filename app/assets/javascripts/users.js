@@ -4,24 +4,24 @@ $(document).ready(function() {
 })
 
 var userStart = function() {
-  if($('#session_instructor').is(':checked')) {
-    $("#student-signin").css("display","none")
-    $("#instructor-signin").css("display", "");
+  if($('#session_instructor').prop('checked')) {
+    $("#student-signin").hide()
+    $("#instructor-signin").show();
   }else{
-    $("#instructor-signin").css("display","none")
-    $("#student-signin").css("display", "");
+    $("#instructor-signin").hide()
+    $("#student-signin").show();
   }
 }
 
 
 var userToggle = function() {
   $("#user-toggle").change(function() {
-    if($('#session_instructor').is(':checked')) {
-      $("#student-signin").css("display","none")
-      $("#instructor-signin").css("display", "");
+    if($('#session_instructor').prop('checked')) {
+      $("#student-signin").hide()
+      $("#instructor-signin").show();
     }else{
-      $("#instructor-signin").css("display","none")
-      $("#student-signin").css("display", "");
+      $("#instructor-signin").hide()
+      $("#student-signin").show();
     }
   })
 }
