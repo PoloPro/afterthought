@@ -9,11 +9,11 @@ class EnrollmentsController < ApplicationController
     @enrollment.confirm_token = SecureRandom.urlsafe_base64.to_s
     if !already_enrolled?(student, course) && @enrollment.save
       EnrollmentMailer.enrollment_confirmation(student, course, @enrollment, current_user).deliver_now
-      flash = "Your email invitation to #{student.name} has been sent!"
+      flash = "Your email invitation to #{student.name} has been sent."
       success = true
       render json: {data: flash, success: success}
     else
-      flash = "Either something went wrong or the student is already enrolled"
+      flash = "Either something went wrong or the student is already enrolled."
       success = false
       render json: {data: flash, success: success}
     end
@@ -21,11 +21,17 @@ class EnrollmentsController < ApplicationController
 
   def confirm_email
     enrollment = Enrollment.find_by_confirm_token(params[:confirmation_token])
-    enrollment.confirm_token = nil
-    @student = Student.find(enrollment.student_placeholder)
-    enrollment.student = @student
-    enrollment.save
-    redirect_to courses_path
+    unless enrollment == nil
+      enrollment.confirm_token = nil
+      @student = Student.find(enrollment.student_placeholder)
+      enrollment.student = @student
+      enrollment.save
+      flash[:success] = "Enrollment successful."
+      redirect_to courses_path
+    else
+      flash[:danger] = "Enrollment not successful. Please get course instructor to resend the invitation, then click the link on the invitation to enroll."
+      redirect_to courses_path
+    end
   end
 
   private
