@@ -70,9 +70,9 @@
 .div_common {
 -webkit-column-count: 2;
 -moz-column-count: 2;
-column-count: 2;
+column-count: 1;
 -webkit-column-gap: 30px;
-column-gap: 30px;
+column-gap: 15px;
 -moz-column-gap: 30px;
 }
 
