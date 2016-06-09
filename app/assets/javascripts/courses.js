@@ -186,7 +186,7 @@ var addSuccessText = function(data) {
     "<td>" + data.title + "</td>" +
     "<td>" + data.description + "</td>" +
     "<td>" + data.courseStudents + "</td>" +
-    "<td><a src='#' action='course-delete' id='" + data.slugified_title + "' title='" + data.title + "'>Remove</a></td>" +
+    "<td style='text-align: center'><a src='#' action='course-delete' id='" + data.slugified_title + "' title='" + data.title + "'><span class='glyphicon glyphicon-remove remove-icon' aria-hidden='true'></span></a></td>" +
   "</tr>"
   $('#find-course').html(courseAlert)
   $('#course-data-table').append(addCourseData)
