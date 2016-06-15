@@ -5,8 +5,9 @@
 
 <br>
 <hr>
-
-<p>Students can submit feedback for this lecture until <strong><%= @lecture_timer.lock_time_string %></strong>.</p>
+<% if @lecture_timer.time_remaining > 0 %>
+  <p>Students can submit feedback for this lecture until <strong><%= @lecture_timer.lock_time_string %></strong>.</p>
+<% end %>
 
 <p><%= @lecture_timer.time_remaining_string %>.</p>
 <div id="progressbar" timeRemainingPercent="<%= @lecture_timer.time_remaining_percent %>"></div>
