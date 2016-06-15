@@ -33,7 +33,15 @@ class LectureTimer
 
   def get_time_remaining
     time_remaining = (@lock_time - Time.now).to_i
+    lock_if_expired(time_remaining)
     time_remaining > 0 ? time_remaining : 0
+  end
+
+  def lock_if_expired(time_remaining)
+    if time_remaining > 0
+      @lecture.locked = true
+      @lecture.save
+    end
   end
 
   def get_time_remaining_percent

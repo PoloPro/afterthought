@@ -34,7 +34,7 @@
   <%= render partial: "feedback_form", locals: { lecture: @lecture, current_user: @current_user } %>
 
 </div>
-<% else %>
+<% elsif @current_user.class == Student %>
   <!-- Completed feedback shown here in place of form -->
   <%= render partial: "completed_feedback", locals: { lecture: @lecture, current_user: @current_user } %>
 <% end %>
