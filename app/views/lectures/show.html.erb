@@ -17,7 +17,7 @@
 
 <%= render "shared/flash" %>
 
-<% if @current_user.class == Student %>
+<% if @current_user.class == Student && @lecture_timer.time_remaining > 0 %>
 
 <div id="feedback-area">
   <!-- Flash message for form failure -->
@@ -26,11 +26,17 @@
 
   <!-- Completed feedback shown here in place of form -->
   <%= render partial: "completed_feedback", locals: { lecture: @lecture, current_user: @current_user } %>
+
+  <!-- Buttons for editing feedback -->
+  <%= render partial: "feedback_buttons", locals: { lecture: @lecture, current_user: @current_user } %>
+
   <!-- Form for submitting feedback -->
   <%= render partial: "feedback_form", locals: { lecture: @lecture, current_user: @current_user } %>
 
 </div>
-
+<% else %>
+  <!-- Completed feedback shown here in place of form -->
+  <%= render partial: "completed_feedback", locals: { lecture: @lecture, current_user: @current_user } %>
 <% end %>
 
 <br>
