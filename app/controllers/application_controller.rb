@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
 
   def require_login
     if current_user.class == OpenStruct
-      flash[:alert] = "You must be signed in to access that page"
+      flash[:alert] = "Please sign in to continue"
       redirect_to login_path
     end
   end
