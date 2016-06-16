@@ -2,7 +2,7 @@ class LecturesController < ApplicationController
 
   def index
     # current_user ? @lectures = current_user.lectures : @lectures = []
-    @lectures = current_user.lectures
+    @lectures = current_user.lectures.sort_by { |lecture| lecture.finish_time }.reverse
   end
 
   def show

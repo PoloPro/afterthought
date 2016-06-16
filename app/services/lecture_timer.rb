@@ -38,7 +38,7 @@ class LectureTimer
   end
 
   def lock_if_expired(time_remaining)
-    if time_remaining > 0
+    if time_remaining < 0
       @lecture.locked = true
       @lecture.save
     end

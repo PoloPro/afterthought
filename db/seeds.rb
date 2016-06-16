@@ -41,7 +41,7 @@ r_john = Review.create(student: s_john, lecture: l_match, content: "Great lectur
 r_belle = Review.create(student: s_belle, lecture: l_match, content: "I got confused by the Elixir case statment. Is it different from Ruby's? Also, I'd love to have a lecture on Phoenix sometime!", locked: false)
 
 #### locked lecture with one review and two students
-l_phoenix = Lecture.create(title: "The Phoenix Framework", description: "take flight with Phoenix!", instructor: i_chris, course: c_elixir, locked: true, created_at: (Time.now - 50.hours), finish_time: (Time.now - 40.hours))
+l_phoenix = Lecture.create(title: "The Phoenix Framework", description: "take flight with Phoenix!", instructor: i_chris, course: c_elixir, locked: true, created_at: (Time.now - 70.hours), finish_time: (Time.now - 60.hours))
 
 r_john2 = Review.create(student: s_john, lecture: l_phoenix, content: "I feel like I need to see the setup a few more times to get the hang of it. Can you do a similarly thorough explanation during tomorrow's lecture as well?", locked: true)
 

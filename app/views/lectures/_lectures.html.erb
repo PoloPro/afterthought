@@ -12,7 +12,7 @@
     <% lectures.each do |lecture| %>
 
     <tr class="table-row-link" data-url="<%= course_lecture_path(lecture.course.id, lecture.id) %>">
-      <td><%= lecture.finish_time %></td>
+      <td><%= lecture.finish_time.strftime("%A, %d %b, %l:%M %p") %></td>
       <td><%= lecture.title %></td>
       <td><%= lecture.description %></td>
       <td><%= lecture.reviews.count %></td>
