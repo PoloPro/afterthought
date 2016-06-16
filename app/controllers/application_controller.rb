@@ -19,14 +19,14 @@ class ApplicationController < ActionController::Base
 
   def require_login
     if current_user.class == OpenStruct
-      flash[:alert] = "Please sign in to continue"
+      flash[:info] = "Please sign in to continue"
       redirect_to login_path
     end
   end
 
   def check_if_logged_in
     if session[:student_id] || session[:instructor_id]
-      flash[:notice] = "You are already signed in"
+      flash[:alert] = "You are already signed in"
       redirect_to courses_path
     end
   end
