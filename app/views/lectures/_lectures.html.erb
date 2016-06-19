@@ -8,17 +8,20 @@
   <th>Description</th>
   <th>Feedback Submitted</th>
   <th>Locked for Feedback?</th>
+  <% unless lectures.empty? %>
+    <% lectures.each do |lecture| %>
 
-  <% lectures.each do |lecture| %>
+    <tr class="table-row-link" data-url="<%= course_lecture_path(lecture.course.id, lecture.id) %>">
+      <td><%= lecture.finish_time.strftime("%A, %d %b, %l:%M %p") %></td>
+      <td><%= lecture.title %></td>
+      <td><%= lecture.description %></td>
+      <td><%= lecture.reviews.count %></td>
+      <td><%= lecture.locked %></td>
+    </tr>
 
-  <tr class="table-row-link" data-url="<%= course_lecture_path(lecture.course.id, lecture.id) %>">
-    <td><%= lecture.finish_time %></td>
-    <td><%= lecture.title %></td>
-    <td><%= lecture.description %></td>
-    <td><%= lecture.reviews.count %></td>
-    <td><%= lecture.locked %></td>
-  </tr>
-
+    <% end %>
+  <% else %>
+    <br>
+    <p class='text-muted'>Currently, you do not have lectures. Please make sure you have joined the correct course.</p>
   <% end %>
-
 </table> <!-- End of table -->

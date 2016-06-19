@@ -2,13 +2,13 @@ include ActionView::Helpers::DateHelper
 
 class LectureTimer
 
-  attr_reader :start_time, 
+  attr_reader :start_time,
   :start_time_string,
-  :lock_time, 
-  :lock_time_string, 
-  :total_time, 
-  :time_remaining, 
-  :time_remaining_percent, 
+  :lock_time,
+  :lock_time_string,
+  :total_time,
+  :time_remaining,
+  :time_remaining_percent,
   :time_remaining_string
 
   def initialize(lecture)
@@ -22,7 +22,7 @@ class LectureTimer
   def calculate_time_remaining
     @start_time = get_start_time
     @lock_time = (@start_time + 24.hour).end_of_day
-    
+
     @total_time = @lock_time - @start_time
     @time_remaining = get_time_remaining
   end
@@ -33,7 +33,15 @@ class LectureTimer
 
   def get_time_remaining
     time_remaining = (@lock_time - Time.now).to_i
+    lock_if_expired(time_remaining)
     time_remaining > 0 ? time_remaining : 0
+  end
+
+  def lock_if_expired(time_remaining)
+    if time_remaining < 0
+      @lecture.locked = true
+      @lecture.save
+    end
   end
 
   def get_time_remaining_percent
@@ -41,7 +49,7 @@ class LectureTimer
   end
 
   def get_time_remaining_string
-    distance_of_time_in_words(@lock_time, Time.now) if time_remaining > 0
+    time_remaining > 0 ? "This lecture will be locked for feedback in #{distance_of_time_in_words(@lock_time, Time.now)}" : "Feedback for this lecture is locked"
   end
 
   def format_times

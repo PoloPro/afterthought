@@ -32,6 +32,7 @@ class CoursesController < ApplicationController
 
   def remove_course
     course = Course.find_by(title: params["course_title"])
+    CoursesHelpers.remove_lectures(current_user, course)
     current_user.courses.delete(course)
     current_user.save
     render json: {stringifyTitle: course.title.parameterize, title: course.title}

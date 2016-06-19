@@ -31,6 +31,7 @@ class CourseAutocompletesController < ApplicationController
     course = Course.find_by(id: params["course_id"].to_i)
     if course && course.authenticate(params["password"])
       current_user.courses << course
+      current_user.lectures << course.lectures
       render json: CoursesHelpers.put_info_into_hash(course, current_user)
     else
       render json: {alert: "Password failed"}

@@ -21,4 +21,11 @@ class CoursesHelpers
     courseStudents: course.students.count,
     userClass: current_user.class.to_s}
   end
+
+  def self.remove_lectures(current_user, course)
+    course.lectures.each do |lecture|
+      current_user.lectures.delete(lecture)
+    end
+  end
+
 end
